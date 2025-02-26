@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syalom - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+  <style>
+    body, html {
+      overflow: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Neon Button (opsional) */
+    .neon-btn {
+      box-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
+    }
+    .neon-btn:hover {
+      box-shadow: 0 0 20px rgba(0, 162, 255, 1);
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-about {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    /* Cursor Glow Effect */
+    .cursor-trail {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle, rgba(0, 162, 255, 0.4) 10%, rgba(0, 162, 255, 0) 60%);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.7;
+      transition: transform 0.25s ease-out, opacity 0.4s;
+      z-index: -1;
+    }
+
+    /* Background */
+    body {
+      background-color: black;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Blur Circles */
+    .blur-circle {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(0, 162, 255, 0.2) 20%, rgba(0, 162, 255, 0) 80%);
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: moveCircle 8s infinite alternate ease-in-out;
+    }
+    @keyframes moveCircle {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(40px) translateX(50px); }
+    }
+    @keyframes moveCircleReverse {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-30px) translateX(-40px); }
+    }
+    @keyframes moveCircleDiagonal {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(50px) translateX(-50px); }
+    }
+    .blur-circle-2 {
+      top: 20%;
+      left: 10%;
+      animation: moveCircle 6s infinite alternate ease-in-out;
+    }
+    .blur-circle-3 {
+      top: 60%;
+      right: 15%;
+      animation: moveCircleReverse 7s infinite alternate ease-in-out;
+    }
+
+    /* Rain Effect Canvas */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    #rainCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Hero Section (Home) */
+    #home {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    /* Scroll Down Button */
+    .scroll-down {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: white;
+      animation: bounce 1.5s infinite;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+  </style>
+</head>
+<body class="relative overflow-hidden">
+
+  <!-- 🔹 Background Circles -->
+  <div class="blur-circle blur-circle-2"></div>
+  <div class="blur-circle blur-circle-3"></div>
+
+  <!-- 🔹 Partikel Hujan -->
+  <canvas id="rainCanvas"></canvas>
+
+  <!-- 🔹 Navbar (Diperkecil di Mobile) -->
+  <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 px-2 sm:px-4 py-2 sm:py-3 w-[90%] sm:w-4/5 flex justify-between items-center glass z-50 text-xs sm:text-sm">
+    <h1 class="font-bold text-white">Syalom</h1>
+    <ul class="flex gap-2 sm:gap-6">
+      <li><a href="#home" class="hover:text-blue-400">Home</a></li>
+      <li><a href="#about" class="hover:text-blue-400">About</a></li>
+      <li><a href="#experience" class="hover:text-blue-400">Experience</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🔹 Hero Section -->
+  <section id="home">
+    <h2 class="text-3xl sm:text-5xl font-extrabold text-blue-400">Full-Stack Developer</h2>
+    <p class="text-base sm:text-lg text-gray-300 mt-4 max-w-xs sm:max-w-lg mx-auto">
+      I am a Full-stack Developer, combining design prowess with technical skills to create immersive digital experiences.
+    </p>
+
+    <!-- Social Media Icons -->
+    <div class="flex gap-6 mt-6 justify-center">
+      <a href="https://github.com/syalomclubby" class="text-2xl sm:text-3xl hover:text-blue-400"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/syalom-layezar/" class="text-2xl sm:text-3xl hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+      <a href="https://instagram.com/syalom_lyz" class="text-2xl sm:text-3xl hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mt-6 sm:mt-8 flex gap-3 sm:gap-4 justify-center">
+      <a href="https://wa.me/6283151431158"><button class="px-4 py-2 sm:px-6 sm:py-3 bg-blue-500 hover:bg-blue-700 transition rounded-md font-bold text-sm sm:text-base">
+        Have any Project?
+      </button></a>
+      <a href="https://wa.me/6283151431158?text=Hello%2C+I%27m+interested+in+your+services!"><button class="px-4 py-2 sm:px-6 sm:py-3 bg-gray-700 hover:bg-gray-500 transition rounded-md font-bold text-sm sm:text-base">
+        Hire Me
+      </button></a>
+    </div>
+
+    <!-- 🔹 Scroll Down Animation -->
+    <div class="scroll-down">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- 🔹 About Section -->
+  <section id="about" class="min-h-[70vh] flex items-center justify-center px-4 sm:px-10 mt-2 sm:mt-4 mb-8 sm:mb-10">
+    <div class="glass-about flex flex-col md:flex-row items-center w-full max-w-6xl gap-6 py-6 sm:py-10">
+      <!-- Bagian Kiri: Teks -->
+      <div class="md:w-1/2 text-center sm:text-left">
+        <h2 class="text-3xl sm:text-4xl font-bold text-blue-400 mb-4">About Me</h2>
+        <p class="text-base sm:text-lg text-gray-300">
+          I am a musician proficient in guitar and piano. In addition, I have strong skills in music composition. I have also been passionate about programming since middle school, consistently exploring new technologies and honing my development skills.
+        </p>
+      </div>
+      <!-- Bagian Kanan: Foto -->
+      <div class="md:w-1/2 flex justify-center">
+        <img
+          src="images/globe.png"
+          alt="Profile"
+          class="rounded-lg w-48 sm:w-80 max-w-full h-auto object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Experience Section -->
+  <section id="experience" class="py-10 sm:py-20 bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-blue-400 mb-6 sm:mb-10">Experience</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Card 1 -->
+        <div class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-gray-800 bg-opacity-80 shadow-xl transition-all duration-500 hover:scale-105 mx-auto">
+          <i class="fas fa-code text-4xl sm:text-5xl text-blue-400"></i>
+          <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">Frontend Developer</h3>
+          <p class="text-gray-300 mt-2 text-sm sm:text-base">
+            Developed UI/UX using modern frameworks like Laravel and Tailwind.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-gray-800 bg-opacity-80 shadow-xl transition-all duration-500 hover:scale-105 mx-auto">
+          <i class="fas fa-database text-4xl sm:text-5xl text-blue-400"></i>
+          <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">Backend Developer</h3>
+          <p class="text-gray-300 mt-2 text-sm sm:text-base">
+            Built robust APIs and handled databases using MySql and Node.js.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-gray-800 bg-opacity-80 shadow-xl transition-all duration-500 hover:scale-105 mx-auto">
+            <i class="fas fa-server text-4xl sm:text-5xl text-blue-400"></i>
+            <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">MC Server Developer</h3>
+            <p class="text-gray-300 mt-2 text-sm sm:text-base">
+              Built and optimized Minecraft servers using Papermc, ensuring high performance for players.
+            </p>
+        </div>          
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔥 Scripts (Tanpa Mengubah JS Efek Hujan dan Mouse) -->
+  <script>
+    // Smooth Scroll
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetElement.offsetTop - (window.innerHeight - targetElement.clientHeight),
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Scroll Down (Samakan logika dengan navbar)
+    document.querySelector('.scroll-down').addEventListener('click', function() {
+      const targetElement = document.querySelector('#about');
+      window.scrollTo({
+        top: targetElement.offsetTop - (window.innerHeight - targetElement.clientHeight),
+        behavior: 'smooth'
+      });
+    });
+
+    // Cursor Glow
+    document.addEventListener('mousemove', function (e) {
+      let circle = document.createElement('div');
+      circle.classList.add('cursor-trail');
+      document.body.appendChild(circle);
+
+      circle.style.left = `${e.pageX - 25}px`;
+      circle.style.top = `${e.pageY - 25}px`;
+
+      setTimeout(() => {
+        circle.style.transform = 'scale(2)';
+        circle.style.opacity = '0';
+      }, 150);
+
+      setTimeout(() => {
+        circle.remove();
+      }, 400);
+    });
+  </script>
+
+  <!-- 🔥 Rain Effect -->
+  <script>
+    const canvas = document.getElementById('rainCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let drops = [];
+    for (let i = 0; i < 150; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 0.5,
+        speed: Math.random() * 1.5 + 0.5
+      });
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.body.scrollHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawRain() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(0, 162, 255, 0.3)';
+      drops.forEach(drop => {
+        ctx.beginPath();
+        ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        drop.y += drop.speed;
+        if (drop.y > canvas.height) {
+          drop.y = 0;
+          drop.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawRain);
+    }
+    drawRain();
+  </script>
+</body>
+</html>
