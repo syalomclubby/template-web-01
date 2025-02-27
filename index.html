@@ -8,159 +8,25 @@
     <link rel="apple-touch-icon" href="images/sl.png" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        overflow: auto;
-      }
-
-      /* Glassmorphism */
-      .glass {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-      .glass-about {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(15px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        max-width: 80%;
-        margin: 0 auto;
-      }
-
-      /* Cursor Glow Effect */
-      .cursor-trail {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background: radial-gradient(
-          circle,
-          rgba(0, 162, 255, 0.4) 10%,
-          rgba(0, 162, 255, 0) 60%
-        );
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0.7;
-        transition: transform 0.25s ease-out, opacity 0.4s;
-        z-index: -1;
-      }
-
-      /* Background */
-      body {
-        background-color: black;
-        color: white;
-        overflow-x: hidden;
-        position: relative;
-      }
-
-      /* Blur Circles */
-      .blur-circle {
-        position: absolute;
-        width: 250px;
-        height: 250px;
-        background: radial-gradient(
-          circle,
-          rgba(0, 162, 255, 0.2) 20%,
-          rgba(0, 162, 255, 0) 80%
-        );
-        border-radius: 50%;
-        filter: blur(80px);
-        animation: moveCircle 8s infinite alternate ease-in-out;
-      }
-      @keyframes moveCircle {
-        0% {
-          transform: translateY(0) translateX(0);
-        }
-        100% {
-          transform: translateY(40px) translateX(50px);
-        }
-      }
-      @keyframes moveCircleReverse {
-        0% {
-          transform: translateY(0) translateX(0);
-        }
-        100% {
-          transform: translateY(-30px) translateX(-40px);
-        }
-      }
-      .blur-circle-2 {
-        top: 20%;
-        left: 10%;
-        animation: moveCircle 6s infinite alternate ease-in-out;
-      }
-      .blur-circle-3 {
-        top: 60%;
-        right: 15%;
-        animation: moveCircleReverse 7s infinite alternate ease-in-out;
-      }
-
-      /* Rain Effect Canvas */
-      canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-      #rainCanvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-      }
-
-      /* Hero Section (Home) */
-      #home {
-        position: relative;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0 1.5rem;
-      }
-
-      /* Scroll Down Button */
-      .scroll-down {
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 24px;
-        color: white;
-        animation: bounce 1.5s infinite;
-        cursor: pointer;
-      }
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateX(-50%) translateY(0);
-        }
-        50% {
-          transform: translateX(-50%) translateY(10px);
-        }
-      }
-    </style>
   </head>
   <body class="relative overflow-hidden">
     <!-- 🔹 Background Circles -->
-    <div class="blur-circle blur-circle-2"></div>
-    <div class="blur-circle blur-circle-3"></div>
+    <div class="tech-bg-circles absolute inset-0 -z-10">
+      <div class="bg-circle circle-1"></div>
+      <div class="bg-circle circle-2"></div>
+      <div class="bg-circle circle-3"></div>
+      <div class="bg-circle circle-4"></div>
+      <div class="bg-circle circle-5"></div>
+      <div class="bg-circle circle-6"></div>
+      <div class="bg-circle circle-7"></div>
+      <div class="bg-circle circle-8"></div>
+    </div>
 
     <!-- 🔹 Partikel Hujan (Global) -->
     <canvas id="rainCanvas"></canvas>
@@ -578,6 +444,8 @@
       id="featured-projects"
       class="py-12 bg-gray-800 flex flex-col items-center justify-center"
     >
+      <div class="absolute inset-0 pointer-events-none -z-10 asap-bg"></div>
+
       <!-- Judul Halaman -->
       <div class="text-center mb-8 px-4">
         <h2 class="text-3xl sm:text-4xl font-bold text-blue-400">
@@ -638,7 +506,7 @@
               <img
                 src="images/homepage.png"
                 alt="Project 1"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
+                class="rounded-lg shadow-lg w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
               />
             </div>
           </div>
@@ -692,13 +560,24 @@
               <img
                 src="images/homepage2.png"
                 alt="Project 2"
-                class="rounded-lg shadow-lg w-full h-auto object-cover"
+                class="rounded-lg shadow-lg w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
               />
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <footer
+      class="bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 py-10 border-t border-gray-700 shadow-md"
+    >
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p class="text-sm">&copy; 2023 Syalom. All rights reserved.</p>
+        <p class="mt-2 text-xs text-gray-400">
+          Crafted with precision and passion.
+        </p>
+      </div>
+    </footer>
 
     <!-- SCRIPT: Menggeser overlay tirai saat tombol di-klik -->
     <script>
