@@ -187,9 +187,8 @@
       <ul class="flex gap-2 sm:gap-6">
         <li><a href="#home" class="hover:text-blue-400">Home</a></li>
         <li><a href="#about" class="hover:text-blue-400">About</a></li>
-        <li>
-          <a href="#experience" class="hover:text-blue-400">Experience</a>
-        </li>
+        <li><a href="#experience" class="hover:text-blue-400">Experience</a></li>
+        <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
       </ul>
     </nav>
 
@@ -333,6 +332,57 @@
       </div>
     </section>
 
+    <!-- 🔹 Projects Section (Section 4) -->
+    <section
+      id="projects"
+      class="py-10 sm:py-20 bg-gray-800 flex flex-col items-center justify-center"
+    >
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl font-bold text-blue-400">Projects</h2>
+        <p class="text-gray-300 mt-2 text-base sm:text-lg">
+          Check out some of my projects below.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Project Card 1 -->
+        <div class="glass p-4 rounded-xl overflow-hidden">
+          <img
+            src="images/project1.png"
+            alt="Project 1"
+            class="w-full h-auto object-cover"
+          />
+          <div class="mt-2 text-white">
+            <h3 class="font-bold text-lg">Project 1</h3>
+            <p class="text-sm text-gray-300">Description of project 1</p>
+          </div>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="glass p-4 rounded-xl overflow-hidden">
+          <img
+            src="images/project2.png"
+            alt="Project 2"
+            class="w-full h-auto object-cover"
+          />
+          <div class="mt-2 text-white">
+            <h3 class="font-bold text-lg">Project 2</h3>
+            <p class="text-sm text-gray-300">Description of project 2</p>
+          </div>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="glass p-4 rounded-xl overflow-hidden">
+          <img
+            src="images/project3.png"
+            alt="Project 3"
+            class="w-full h-auto object-cover"
+          />
+          <div class="mt-2 text-white">
+            <h3 class="font-bold text-lg">Project 3</h3>
+            <p class="text-sm text-gray-300">Description of project 3</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 🔥 Scripts (Tanpa Mengubah JS Efek Hujan dan Mouse) -->
     <script>
       // Smooth Scroll
@@ -364,7 +414,7 @@
         });
 
       // Cursor Glow
-      // Efek untuk mouse (sudah ada)
+      // Efek untuk mouse
       document.addEventListener("mousemove", function (e) {
         let circle = document.createElement("div");
         circle.classList.add("cursor-trail");
@@ -385,7 +435,7 @@
 
       // Efek untuk touch (untuk perangkat mobile)
       document.addEventListener("touchmove", function (e) {
-        let touch = e.touches[0]; // Ambil sentuhan pertama
+        let touch = e.touches[0];
         if (touch) {
           let circle = document.createElement("div");
           circle.classList.add("cursor-trail");
