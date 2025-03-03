@@ -15,8 +15,36 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   </head>
   <body class="relative overflow-hidden">
+    <!-- LOADER 1: Diamond Loader -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
+    >
+      <!-- Container diamond: grid 3×3 dengan gap kecil, diputar 45° untuk membentuk diamond -->
+      <div
+        id="diamond"
+        class="grid grid-cols-3 gap-1 transform rotate-45 origin-center"
+        style="width: 5rem; height: 5rem"
+      >
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+        <div class="square bg-blue-400 w-6 h-6"></div>
+      </div>
+    </div>
+
     <!-- 🔹 Background Circles -->
     <div class="tech-bg-circles absolute inset-0 -z-10">
       <div class="bg-circle circle-1"></div>
@@ -38,8 +66,8 @@
       id="navbar"
       class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-50 flex items-center justify-between px-6 bg-transparent border border-transparent h-20 transition-all duration-300 ease-in-out"
     >
-      <!-- Logo -->
-      <div class="text-blue-400 font-bold text-xl">Syalom</div>
+      <!-- Logo dengan Typewriter Effect -->
+      <div id="typewriter" class="font-thin text-xl"></div>
 
       <!-- Menu Desktop -->
       <nav class="hidden md:flex space-x-6">
@@ -71,19 +99,9 @@
       id="mobileMenu"
       class="hidden md:hidden fixed top-20 mt-6 left-1/2 -translate-x-1/2 w-[90%] bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-lg z-40 shadow-lg scale-y-0 opacity-0 origin-top transition-all duration-300 ease-in-out"
     >
-      <a
-        href="#home"
-        class="block py-2 hover:text-blue-300"
-        >Home</a
-      >
-      <a
-        href="#about"
-        class="block py-2 hover:text-blue-300"
-        >About</a
-      >
-      <a
-        href="#experience"
-        class="block py-2 hover:text-blue-300"
+      <a href="#home" class="block py-2 hover:text-blue-300">Home</a>
+      <a href="#about" class="block py-2 hover:text-blue-300">About</a>
+      <a href="#experience" class="block py-2 hover:text-blue-300"
         >Experience</a
       >
       <a href="#projects" class="block py-2 hover:text-blue-300">Projects</a>
@@ -859,6 +877,83 @@
           );
         }
       });
+
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        const squares = document.querySelectorAll("#diamond .square");
+
+        // Set awal: setiap kotak mulai dengan scale 0
+        gsap.set(squares, { scale: 0 });
+
+        // Timeline untuk animasi loader
+        const tl = gsap.timeline({
+          onComplete: () => {
+            // Fade out loader secara halus
+            gsap.to(loader, {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power1.out",
+              onComplete: () => {
+                loader.style.display = "none";
+                document.body.classList.remove("overflow-hidden");
+              },
+            });
+          },
+        });
+
+        // Animasi: tiap kotak tumbuh dari scale 0 ke scale 1 dengan efek back (overshoot)
+        tl.to(squares, {
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+        });
+
+        // Tahan loader selama 0.5 detik sebelum fade out
+        tl.to({}, { duration: 0.5 });
+      });
+
+      const messages = ["Hi, I'm Syalom", "Welcome To My Web"];
+      const typewriterEl = document.getElementById("typewriter");
+
+      let currentMessageIndex = 0;
+      let currentCharIndex = 0;
+      let isDeleting = false;
+
+      // Gunakan ikon Font Awesome:
+      // Ikon terminal untuk coding (sebagai pengganti vector "S")
+      const terminalIcon = '<i class="fas fa-globe text-blue-400 mr-2"></i>';
+      // Ikon panah sebagai prefix (menggantikan simbol ">")
+      const arrowIcon = '<i class="fas fa-angle-right text-blue-400 mr-2"></i>';
+
+      function type() {
+        const currentMessage = messages[currentMessageIndex];
+        let displayedText = currentMessage.substring(0, currentCharIndex);
+
+        // Gabungkan ikon terminal, ikon panah, teks, dan kursor
+        typewriterEl.innerHTML =
+          terminalIcon +
+          arrowIcon +
+          displayedText +
+          "<span class='cursor'></span>";
+
+        if (!isDeleting && currentCharIndex < currentMessage.length) {
+          currentCharIndex++;
+          setTimeout(type, 100);
+        } else if (!isDeleting && currentCharIndex === currentMessage.length) {
+          isDeleting = true;
+          setTimeout(type, 1500);
+        } else if (isDeleting && currentCharIndex > 0) {
+          currentCharIndex--;
+          setTimeout(type, 50);
+        } else if (isDeleting && currentCharIndex === 0) {
+          isDeleting = false;
+          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+          setTimeout(type, 500);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", type);
     </script>
   </body>
 </html>

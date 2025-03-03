@@ -7,6 +7,26 @@ html {
   overflow-x: auto;
 }
 
+.cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em; /* pastikan kursor setinggi teks */
+  background-color: currentColor;
+  margin-left: 4px;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+#typewriter {
+  font-family: 'Fira Code', Consolas, 'Courier New', monospace;
+  font-size: 1rem; /* Sesuaikan ukuran jika perlu */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 /* Hamburger lines default */
 .hamburger span {
   display: block;
@@ -32,6 +52,17 @@ html {
 .hamburger-active .line3 {
   /* Rotate -45°, bergeser 3px,-3px */
   transform: rotate(-45deg) translate(6px, -9.7px);
+}
+
+/* Loader 1: Kotak persegi dengan gap */
+#rect-container .rect {
+  width: 2rem;
+  height: 2rem;
+}
+
+.square {
+  /* Efek glow neon */
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.7);
 }
 
 /* Glassmorphism */
