@@ -2,7 +2,36 @@ body,
 html {
   margin: 0;
   padding: 0;
-  overflow: auto;
+  font-family: -apple-system, /* Untuk Safari / iOS */ BlinkMacSystemFont,
+    "Segoe UI", /* Windows */ Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: auto;
+}
+
+/* Hamburger lines default */
+.hamburger span {
+  display: block;
+  /* Lebar penuh (bisa diperkecil ke 80% agar lebih minimalis):
+     width: 80%; */
+  width: 100%;
+  /* Kurangi ketebalan agar tidak tampak besar */
+  height: 1.5px;
+  background-color: #fff;
+  transform-origin: center; /* pivot di tengah */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  margin: 2px 0; /* sedikit jarak antar garis */
+}
+
+/* Saat tombol ditekan => garis berubah jadi X */
+.hamburger-active .line1 {
+  /* Rotate 45°, bergeser 3px,3px agar X lebih rapat */
+  transform: rotate(45deg) translate(6px, 9.7px);
+}
+.hamburger-active .line2 {
+  opacity: 0;
+}
+.hamburger-active .line3 {
+  /* Rotate -45°, bergeser 3px,-3px */
+  transform: rotate(-45deg) translate(6px, -9.7px);
 }
 
 /* Glassmorphism */
