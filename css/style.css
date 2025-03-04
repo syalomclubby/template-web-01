@@ -16,8 +16,29 @@ html {
   animation: blink 0.7s steps(1) infinite;
 }
 
+#customCursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 1); /* warna default */
+  pointer-events: none;
+  z-index: 9999; /* berada di depan, tapi text clickable bisa diberi z-index lebih tinggi jika perlu */
+
+  /* Agar warnanya beradaptasi (membaur) dengan latar,
+     sehingga tidak tersamarkan di latar putih/hitam. */
+  mix-blend-mode: difference;
+
+  /* Transisi cepat (0.15s) */
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease,
+    background-color 0.2s ease, transform 0.2s ease;
+  transform: translate(-50%, -50%);
+}
+
 #typewriter {
-  font-family: 'Fira Code', Consolas, 'Courier New', monospace;
+  font-family: "Fira Code", Consolas, "Courier New", monospace;
   font-size: 1rem; /* Sesuaikan ukuran jika perlu */
 }
 
