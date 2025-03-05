@@ -56,6 +56,10 @@ html {
   transform: rotate(-45deg) translate(6px, -9.7px);
 }
 
+#scrollTopBtn {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 /* Loader 1: Kotak persegi dengan gap */
 #rect-container .rect {
   width: 2rem;

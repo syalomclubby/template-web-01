@@ -28,6 +28,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
   <body class="relative overflow-hidden">
+    <button
+      id="scrollTopBtn"
+      class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg transition-all duration-300 hover:bg-[#4a6fa5] scale-0 opacity-0 z-[9998]"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <div id="customCursor"></div>
     <!-- LOADER 1: Diamond Loader -->
     <div
@@ -1101,6 +1108,46 @@
         // Misal, asumsikan loader selesai dan telah dihapus,
         // langsung jalankan animasi teks di section home
         animateHomeSection();
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 200) {
+            scrollTopBtn.classList.remove("opacity-0", "scale-0");
+            scrollTopBtn.classList.add("opacity-100", "scale-100");
+          } else {
+            scrollTopBtn.classList.remove("opacity-100", "scale-100");
+            scrollTopBtn.classList.add("opacity-0", "scale-0");
+          }
+        });
+
+        scrollTopBtn.addEventListener("click", function () {
+          smoothScrollToTop(1500); // Durasi scroll 1500ms (1.5 detik)
+        });
+
+        function smoothScrollToTop(duration) {
+          const start = window.scrollY;
+          const startTime = performance.now();
+
+          function scrollStep(timestamp) {
+            const currentTime = timestamp - startTime;
+            const progress = Math.min(currentTime / duration, 1);
+            window.scrollTo(0, start * (1 - easeInOutCubic(progress)));
+
+            if (progress < 1) {
+              requestAnimationFrame(scrollStep);
+            }
+          }
+
+          requestAnimationFrame(scrollStep);
+        }
+
+        // Fungsi easing untuk efek lambat di awal, cepat di tengah, lalu lambat di akhir
+        function easeInOutCubic(t) {
+          return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
       });
     </script>
   </body>
