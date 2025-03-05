@@ -56,8 +56,18 @@ html {
   transform: rotate(-45deg) translate(6px, -9.7px);
 }
 
+/* Keadaan awal: tombol tersembunyi, muncul dari bawah dengan efek “lompat” */
 #scrollTopBtn {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+  transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Saat tombol ditampilkan (kelas .show ditambahkan via JS) */
+#scrollTopBtn.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* Loader 1: Kotak persegi dengan gap */

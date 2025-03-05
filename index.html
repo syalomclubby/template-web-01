@@ -30,7 +30,8 @@
   <body class="relative overflow-hidden">
     <button
       id="scrollTopBtn"
-      class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg transition-all duration-300 hover:bg-[#4a6fa5] scale-0 opacity-0 z-[9998]"
+      class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
+      aria-label="Scroll to top"
     >
       <i class="fa-solid fa-arrow-up"></i>
     </button>
@@ -556,7 +557,7 @@
     <!-- 🔹 Featured Projects (Section 4) -->
     <section
       id="projects"
-      class="py-12 bg-[#243044] p-] flex flex-col items-center justify-center"
+      class="py-12 bg-[#243044] flex flex-col items-center justify-center"
     >
       <div class="absolute inset-0 pointer-events-none -z-10 asap-bg"></div>
 
@@ -715,7 +716,7 @@
       });
     </script>
 
-    <!-- 🔥 Scripts (Hujan, Cursor Glow, dll.) -->
+    <!-- Scripts (Hujan, Cursor Glow, dll.) -->
     <script>
       // Smooth Scroll
       document.querySelectorAll("nav a").forEach((anchor) => {
@@ -773,7 +774,7 @@
           targetY = 0;
         let currentX = 0,
           currentY = 0;
-        const speed = 0.18; // Sesuaikan nilai untuk kecepatan (lebih besar = lebih cepat)
+        const speed = 0.95; // Sesuaikan nilai untuk kecepatan (lebih besar = lebih cepat)
 
         function animateCursor() {
           currentX += (targetX - currentX) * speed;
@@ -1069,7 +1070,7 @@
       document.addEventListener("DOMContentLoaded", type);
 
       const lenis = new Lenis({
-        duration: 1.2, // durasi animasi scroll
+        duration: 0.35, // durasi animasi scroll
         easing: (t) => Math.min(1, t * (2 - t)), // fungsi easing (bisa disesuaikan)
         direction: "vertical", // arah scroll
         smooth: true, // aktifkan smooth scrolling
@@ -1118,6 +1119,15 @@
         // Misal, asumsikan loader selesai dan telah dihapus,
         // langsung jalankan animasi teks di section home
         animateHomeSection();
+      });
+
+      window.addEventListener("scroll", () => {
+        const btn = document.getElementById("scrollTopBtn");
+        if (window.scrollY > 200) {
+          btn.classList.add("show");
+        } else {
+          btn.classList.remove("show");
+        }
       });
 
       document.addEventListener("DOMContentLoaded", function () {
