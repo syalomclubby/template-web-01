@@ -797,31 +797,35 @@
     <script>
       const canvas = document.getElementById("rainCanvas");
       const ctx = canvas.getContext("2d");
-      // Perbanyak tetesan agar hujan lebih padat
-      const dropCount = window.innerWidth < 768 ? 600 : 300;
 
+      // Kurangi jumlah tetesan & buat beda antara mobile dan desktop
+      const dropCount = window.innerWidth < 768 ? 500 : 200;
+
+      // Inisialisasi array tetesan
       let drops = [];
       for (let i = 0; i < dropCount; i++) {
         drops.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * document.body.scrollHeight,
-          radius: Math.random() * 2 + 0.5,
-          speed: Math.random() * 1.5 + 0.5,
+          // Perkecil radius agar tetesan lebih halus
+          radius: Math.random() * 1.2 + 0.2,
+          // Kecepatan tetap rendah
+          speed: Math.random() * 1.2 + 0.3,
         });
       }
 
       function resizeCanvas() {
         canvas.width = window.innerWidth;
-        // Agar kanvas mengikuti tinggi konten
         canvas.height = document.body.scrollHeight;
       }
       window.addEventListener("resize", () => {
         resizeCanvas();
-        // Jika ingin menambah dropCount saat resize, boleh diatur ulang di sini
       });
       resizeCanvas();
 
+      // Gambar tetesan hujan
       function drawRain() {
+        // Lebih transparan agar lebih samar
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "rgba(0, 162, 255, 0.3)";
         drops.forEach((drop) => {
@@ -829,8 +833,9 @@
           ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
           ctx.fill();
 
+          // Update posisi tetesan
           drop.y += drop.speed;
-          // Ulangi tetesan jika sudah melebihi tinggi dokumen
+          // Jika melebihi tinggi dokumen, ulangi dari atas
           if (drop.y > document.body.scrollHeight) {
             drop.y = 0;
             drop.x = Math.random() * canvas.width;
