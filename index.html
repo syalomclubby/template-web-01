@@ -726,23 +726,29 @@
         customCursor.style.transform = "translate(-50%, -50%)";
         customCursor.style.zIndex = "9999";
         customCursor.style.mixBlendMode = "difference";
+        // Hapus transition pada transform (akan diupdate manual)
         customCursor.style.transition =
-          "transform 0.2s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease";
+          "width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease";
 
-        // Gunakan lerpFactor lebih tinggi agar mengikuti mouse lebih cepat
-        let lerpFactor = 1.9; // Naikkan dari 0.2 menjadi 0.4
         let targetX = 0,
           targetY = 0;
         let currentX = 0,
           currentY = 0;
+        let lastTime = performance.now();
+        // Smoothing constant: semakin besar nilainya, semakin cepat menyusul target
+        const smoothing = 12;
 
-        function animateCursor() {
-          currentX += (targetX - currentX) * lerpFactor;
-          currentY += (targetY - currentY) * lerpFactor;
+        function animateCursor(currentTime) {
+          const dt = (currentTime - lastTime) / 1000; // delta time dalam detik
+          lastTime = currentTime;
+          // Menggunakan exponential smoothing: faktor = 1 - exp(-smoothing * dt)
+          const factor = 1 - Math.exp(-smoothing * dt);
+          currentX += (targetX - currentX) * factor;
+          currentY += (targetY - currentY) * factor;
           customCursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
           requestAnimationFrame(animateCursor);
         }
-        animateCursor();
+        requestAnimationFrame(animateCursor);
 
         // Update posisi target saat mouse bergerak
         document.addEventListener("mousemove", (e) => {
@@ -994,7 +1000,7 @@
       document.addEventListener("DOMContentLoaded", type);
 
       const lenis = new Lenis({
-        duration: 0.75,
+        duration: 0.6,
         easing: (t) => Math.min(1, t * (2 - t)),
         direction: "vertical",
         smooth: true,
