@@ -29,42 +29,47 @@ html {
   }
 }
 
-/* Hamburger lines default */
-.hamburger span {
-  display: block;
-  /* Lebar penuh (bisa diperkecil ke 80% agar lebih minimalis):
-     width: 80%; */
-  width: 100%;
-  /* Kurangi ketebalan agar tidak tampak besar */
-  height: 1.5px;
-  background-color: #fff;
-  transform-origin: center; /* pivot di tengah */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  margin: 2px 0; /* sedikit jarak antar garis */
+/* Hamburger container lebih kecil */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 14px; /* Lebar total hamburger */
+  height: 10px; /* Tinggi total hamburger */
 }
 
-/* Saat tombol ditekan => garis berubah jadi X */
+/* Garis-garis hamburger */
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px; /* Lebih tipis */
+  background-color: white;
+  border-radius: 1px; /* Sedikit melengkung */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Transformasi jadi 'X' */
 .hamburger-active .line1 {
-  /* Rotate 45°, bergeser 3px,3px agar X lebih rapat */
-  transform: rotate(45deg) translate(6px, 9.7px);
+  transform: rotate(45deg) translate(2.5px, 3.4px);
 }
 .hamburger-active .line2 {
   opacity: 0;
 }
 .hamburger-active .line3 {
-  /* Rotate -45°, bergeser 3px,-3px */
-  transform: rotate(-45deg) translate(6px, -9.7px);
+  transform: rotate(-45deg) translate(2px, -3px);
 }
 
 /* Keadaan awal: tombol tersembunyi, muncul dari bawah dengan efek “lompat” */
 #scrollTopBtn {
   opacity: 0;
-  transform: translateY(50px) scale(0.8);
-  transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Lebih drastis: turun 60px + skala 0.5 */
+  transform: translateY(60px) scale(0.5);
+
+  /* Opacity muncul lebih cepat (0.4s), lompat lebih lama (0.8s) */
+  transition: opacity 0.4s ease-out,
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Saat tombol ditampilkan (kelas .show ditambahkan via JS) */
 #scrollTopBtn.show {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -98,34 +103,26 @@ html {
   margin: 0 auto;
 }
 
-/* Cursor Glow Effect */
-.cursor-trail {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(
-    circle,
-    rgba(0, 162, 255, 0.4) 10%,
-    rgba(0, 162, 255, 0) 60%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0.7;
-  transition: transform 0.25s ease-out, opacity 0.4s;
-  z-index: -1;
-}
-
 /* Background */
 body {
-  background: radial-gradient(
-      circle at 50% 30%,
-      rgba(0, 10, 36, 0.8),
-      rgba(0, 0, 0, 0.9)
+  background: 
+    /* 1) Sedikit ungu di pojok kanan atas */ radial-gradient(
+      circle at top right,
+      rgba(38, 0, 255, 0.2),
+      transparent 15%
     ),
-    linear-gradient(180deg, #001f3f, #000814);
+    /* 2) Radial biru-hitam */
+      radial-gradient(
+        circle at 50% 30%,
+        rgba(0, 10, 36, 0.8),
+        rgba(0, 0, 0, 0.9)
+      ),
+    /* 3) Linear gradient: dominan hitam di atas */
+      linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
   color: white;
   overflow-x: hidden;
-  position: relative;
+  position: relative; /* agar pseudo-element bisa absolute di atasnya */
+  z-index: 0; /* pastikan body punya z-index <= 0 */
 }
 
 /* Blur Circles */
@@ -153,7 +150,7 @@ body {
   height: 200px;
   background: radial-gradient(
     circle,
-    rgba(0, 162, 255, 0.4) 0%,
+    rgba(0, 89, 255, 0.5) 1%,
     rgba(0, 162, 255, 0) 70%
   );
   top: 10%;

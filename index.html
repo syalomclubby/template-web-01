@@ -76,12 +76,11 @@
     <canvas id="rainCanvas"></canvas>
 
     <!-- 🔹 Navbar -->
-    <!-- Navbar -->
     <header
       id="navbar"
-      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-50 flex items-center justify-between px-6 bg-transparent border border-transparent h-20 transition-all duration-300 ease-in-out"
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-50 flex items-center justify-between px-6 bg-transparent border border-transparent h-16 transition-all duration-300 ease-in-out"
     >
-      <!-- Logo dengan Typewriter Effect -->
+      <!-- Logo -->
       <div id="typewriter" class="font-thin text-xl"></div>
 
       <!-- Menu Desktop -->
@@ -95,24 +94,21 @@
       <!-- Hamburger (mobile) -->
       <button
         id="navToggle"
-        class="md:hidden relative w-8 h-6 flex flex-col justify-between focus:outline-none transition-all duration-300"
+        class="md:hidden relative w-8 h-8 flex items-center justify-center rounded-md border border border-white/20 focus:outline-none transition-all duration-300"
       >
-        <span
-          class="line1 block h-0.5 w-full bg-white transform transition-all duration-300 ease-in-out"
-        ></span>
-        <span
-          class="line2 block h-0.5 w-full bg-white transform transition-all duration-300 ease-in-out"
-        ></span>
-        <span
-          class="line3 block h-0.5 w-full bg-white transform transition-all duration-300 ease-in-out"
-        ></span>
+        <!-- Kontainer garis hamburger -->
+        <div class="hamburger">
+          <span class="line1"></span>
+          <span class="line2"></span>
+          <span class="line3"></span>
+        </div>
       </button>
     </header>
 
-    <!-- Menu Mobile (dropdown) dengan efek kaca -->
+    <!-- Menu Mobile -->
     <div
       id="mobileMenu"
-      class="hidden md:hidden fixed top-20 mt-6 left-1/2 -translate-x-1/2 w-[90%] bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-lg z-40 shadow-lg scale-y-0 opacity-0 origin-top transition-all duration-300 ease-in-out"
+      class="hidden md:hidden fixed top-16 mt-8 left-1/2 -translate-x-1/2 w-[90%] bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-lg z-40 shadow-lg scale-y-0 opacity-0 origin-top transition-all duration-300 ease-in-out"
     >
       <a href="#home" class="block py-2 hover:text-[#4a6fa5]">Home</a>
       <a href="#about" class="block py-2 hover:text-[#4a6fa5]">About</a>
@@ -120,42 +116,6 @@
         >Experience</a
       >
       <a href="#projects" class="block py-2 hover:text-[#4a6fa5]">Projects</a>
-    </div>
-
-    <!-- MENU MOBILE -->
-    <div
-      id="mobileMenu"
-      class="hidden md:hidden fixed top-20 left-1/2 -translate-x-1/2 w-[90%] bg-gray-900/90 text-white px-4 py-3 rounded-lg z-40 shadow-lg scale-y-0 opacity-0 origin-top transition-all duration-300 ease-in-out"
-    >
-      <a
-        href="#home"
-        class="block py-2 border-b border-gray-700 hover:text-[#4a6fa5]"
-        >Home</a
-      >
-      <a
-        href="#about"
-        class="block py-2 border-b border-gray-700 hover:text-[#4a6fa5]"
-        >About</a
-      >
-      <a
-        href="#experience"
-        class="block py-2 border-b border-gray-700 hover:text-[#4a6fa5]"
-        >Experience</a
-      >
-      <a href="#projects" class="block py-2 hover:text-[#4a6fa5]">Projects</a>
-    </div>
-
-    <!-- Menu Mobile Dropdown -->
-    <div
-      id="mobileMenu"
-      class="hidden md:hidden flex-col space-y-2 bg-gray-900 text-white px-6 py-4 origin-top transform scale-y-0 opacity-0 transition-all duration-300 ease-in-out fixed top-20 left-1/2 -translate-x-1/2 w-[90%] rounded-lg z-40"
-    >
-      <a href="#home" class="block hover:text-[#4a6fa5]">Home</a>
-      <a href="#about" class="block hover:text-[#4a6fa5]">About</a>
-      <a href="#experience" class="block hover:text-[#4a6fa5]">Experience</a>
-      <a href="#featured-projects" class="block hover:text-[#4a6fa5]"
-        >Projects</a
-      >
     </div>
 
     <!-- 🔹 Hero Section -->
@@ -754,7 +714,7 @@
       if (window.matchMedia("(pointer: fine)").matches) {
         const customCursor = document.getElementById("customCursor");
 
-        // Set ukuran dan style dasar custom cursor
+        // Set style dasar custom cursor
         customCursor.style.position = "fixed";
         customCursor.style.top = "0";
         customCursor.style.left = "0";
@@ -769,27 +729,27 @@
         customCursor.style.transition =
           "transform 0.2s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease";
 
-        // Smoothing posisi menggunakan lerp
+        // Gunakan lerpFactor lebih tinggi agar mengikuti mouse lebih cepat
+        let lerpFactor = 1.9; // Naikkan dari 0.2 menjadi 0.4
         let targetX = 0,
           targetY = 0;
         let currentX = 0,
           currentY = 0;
-        const speed = 0.95; // Sesuaikan nilai untuk kecepatan (lebih besar = lebih cepat)
 
         function animateCursor() {
-          currentX += (targetX - currentX) * speed;
-          currentY += (targetY - currentY) * speed;
+          currentX += (targetX - currentX) * lerpFactor;
+          currentY += (targetY - currentY) * lerpFactor;
           customCursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
           requestAnimationFrame(animateCursor);
         }
         animateCursor();
 
-        // Update posisi target
+        // Update posisi target saat mouse bergerak
         document.addEventListener("mousemove", (e) => {
           targetX = e.clientX;
           targetY = e.clientY;
 
-          // Jika kursor benar-benar di pojok (misal < 5px dari tepi), hilangkan custom cursor
+          // Sembunyikan custom cursor jika mendekati tepi layar
           const buffer = 5;
           if (
             e.clientX < buffer ||
@@ -803,7 +763,7 @@
           }
         });
 
-        // Hanya pasang efek hover pada elemen yang clickable (tidak termasuk #logo atau #typewriter)
+        // Efek hover pada elemen clickable
         const hoverableSelectors = [
           "button",
           "a",
@@ -825,53 +785,12 @@
           });
         });
       } else {
-        // Jika tidak mendukung pointer fine (mobile), sembunyikan custom cursor
+        // Jika pointer bukan fine (mobile), sembunyikan custom cursor
         const customCursor = document.getElementById("customCursor");
         if (customCursor) {
           customCursor.style.display = "none";
         }
       }
-
-      // Cursor Glow: Mouse
-      // document.addEventListener("mousemove", function (e) {
-      //   let circle = document.createElement("div");
-      //   circle.classList.add("cursor-trail");
-      //   document.body.appendChild(circle);
-
-      //   circle.style.left = `${e.pageX - 25}px`;
-      //   circle.style.top = `${e.pageY - 25}px`;
-
-      //   setTimeout(() => {
-      //     circle.style.transform = "scale(2)";
-      //     circle.style.opacity = "0";
-      //   }, 150);
-
-      //   setTimeout(() => {
-      //     circle.remove();
-      //   }, 400);
-      // });
-
-      // Cursor Glow: Touch (Mobile)
-      // document.addEventListener("touchmove", function (e) {
-      //   let touch = e.touches[0];
-      //   if (touch) {
-      //     let circle = document.createElement("div");
-      //     circle.classList.add("cursor-trail");
-      //     document.body.appendChild(circle);
-
-      //     circle.style.left = `${touch.pageX - 25}px`;
-      //     circle.style.top = `${touch.pageY - 25}px`;
-
-      //     setTimeout(() => {
-      //       circle.style.transform = "scale(2)";
-      //       circle.style.opacity = "0";
-      //     }, 150);
-
-      //     setTimeout(() => {
-      //       circle.remove();
-      //     }, 400);
-      //   }
-      // });
     </script>
 
     <!-- 🔥 Rain Effect -->
