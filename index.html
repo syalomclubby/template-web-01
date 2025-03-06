@@ -27,7 +27,7 @@
     <!-- Vanta.js Globe effect -->
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
-  <body class="relative overflow-hidden">
+  <body class="relative">
     <button
       id="scrollTopBtn"
       class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
@@ -799,7 +799,7 @@
       const ctx = canvas.getContext("2d");
 
       // Kurangi jumlah tetesan & buat beda antara mobile dan desktop
-      const dropCount = window.innerWidth < 768 ? 500 : 200;
+      const dropCount = window.innerWidth < 768 ? 500 : 400;
 
       // Inisialisasi array tetesan
       let drops = [];
@@ -994,10 +994,12 @@
       document.addEventListener("DOMContentLoaded", type);
 
       const lenis = new Lenis({
-        duration: 0.35, // durasi animasi scroll
-        easing: (t) => Math.min(1, t * (2 - t)), // fungsi easing (bisa disesuaikan)
-        direction: "vertical", // arah scroll
-        smooth: true, // aktifkan smooth scrolling
+        duration: 0.75,
+        easing: (t) => Math.min(1, t * (2 - t)),
+        direction: "vertical",
+        smooth: true,
+        smoothWheel: true, // Pastikan ini true agar wheel/touchpad ikut smooth
+        smoothTouch: true, // Bisa atur sesuai kebutuhan
       });
 
       function raf(time) {
