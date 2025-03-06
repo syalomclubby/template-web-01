@@ -104,25 +104,43 @@ html {
 }
 
 /* Background */
+/* Desktop / default (tetap) */
 body {
   background: 
-    /* 1) Sedikit ungu di pojok kanan atas */ radial-gradient(
+    /* Ungu di pojok kanan atas */ radial-gradient(
       circle at top right,
       rgba(38, 0, 255, 0.2),
       transparent 15%
     ),
-    /* 2) Radial biru-hitam */
+    /* Radial biru-hitam */
       radial-gradient(
         circle at 50% 30%,
         rgba(0, 10, 36, 0.8),
         rgba(0, 0, 0, 0.9)
       ),
-    /* 3) Linear gradient: dominan hitam di atas */
+    /* Linear gradient: dominan hitam di atas */
       linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
   color: white;
   overflow-x: hidden;
-  position: relative; /* agar pseudo-element bisa absolute di atasnya */
-  z-index: 0; /* pastikan body punya z-index <= 0 */
+  position: relative;
+  z-index: 0;
+}
+
+/* Mobile: turunkan opacity ungu */
+@media (max-width: 768px) {
+  body {
+    background: radial-gradient(
+        circle at top right,
+        rgba(38, 0, 255, 0.1),
+        /* ganti 0.2 jadi 0.1 agar lebih tipis */ transparent 15%
+      ),
+      radial-gradient(
+        circle at 50% 30%,
+        rgba(0, 10, 36, 0.8),
+        rgba(0, 0, 0, 0.9)
+      ),
+      linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
+  }
 }
 
 /* Blur Circles */
