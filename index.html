@@ -1000,10 +1000,12 @@
       document.addEventListener("DOMContentLoaded", type);
 
       const lenis = new Lenis({
-        duration: 0.6, // durasi animasi scroll
-        easing: (t) => Math.sin((t * Math.PI) / 2), // easeOutSine: transisi halus tanpa patah-patah
+        duration: 0.6,
+        easing: (t) => Math.min(1, t * (2 - t)),
         direction: "vertical",
         smooth: true,
+        smoothWheel: true, // Pastikan ini true agar wheel/touchpad ikut smooth
+        smoothTouch: true, // Bisa atur sesuai kebutuhan
       });
 
       function raf(time) {
