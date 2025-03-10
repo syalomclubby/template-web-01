@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#4a6fa5" />
+    <meta name="og:image" content="images/logo.png">
     <title>Syalom - Portfolio</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="images/sl.png" />
-    <link rel="apple-touch-icon" href="images/sl.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png" />
+    <link rel="apple-touch-icon" href="images/logo.png" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -100,10 +101,10 @@
 
       <!-- Menu Desktop -->
       <nav class="hidden md:flex space-x-6">
-        <a href="#home" class="hover:text-[#4a6fa5]">Home</a>
-        <a href="#about" class="hover:text-[#4a6fa5]">About</a>
-        <a href="#experience" class="hover:text-[#4a6fa5]">Experience</a>
-        <a href="#projects" class="hover:text-[#4a6fa5]">Projects</a>
+        <a href="#home" class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500">Home</a>
+        <a href="#about" class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500">About</a>
+        <a href="#experience" class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500">Experience</a>
+        <a href="#projects" class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500">Projects</a>
       </nav>
 
       <!-- Hamburger (mobile) -->
@@ -156,17 +157,17 @@
       <div class="flex gap-6 mt-6 justify-center">
         <a
           href="https://github.com/syalomclubby"
-          class="text-2xl sm:text-3xl hover:text-[#4a6fa5]"
+          class="text-2xl sm:text-3xl hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
           ><i class="fab fa-github"></i
         ></a>
         <a
           href="https://linkedin.com/in/syalom-layezar/"
-          class="text-2xl sm:text-3xl hover:text-[#4a6fa5]"
+          class="text-2xl sm:text-3xl hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
           ><i class="fab fa-linkedin"></i
         ></a>
         <a
           href="https://instagram.com/syalom_lyz"
-          class="text-2xl sm:text-3xl hover:text-[#4a6fa5]"
+          class="text-2xl sm:text-3xl hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
           ><i class="fab fa-instagram"></i
         ></a>
       </div>
@@ -175,7 +176,7 @@
       <div class="mt-6 sm:mt-8 flex gap-3 sm:gap-4 justify-center">
         <a href="https://wa.me/6283151431158"
           ><button
-            class="px-4 py-2 sm:px-6 sm:py-3 bg-[#4a6fa5] hover:bg-blue-900 transition rounded-md font-bold text-sm sm:text-base"
+            class="px-4 py-2 sm:px-6 sm:py-3 bg-[#4a6fa5] hover:bg-blue-900 transition rounded-md font-bold text-sm sm:text-base transition-all ease-in-out duration-500"
           >
             Have any Project?
           </button></a
@@ -183,7 +184,7 @@
         <a
           href="https://wa.me/6283151431158?text=Hello%2C+I%27m+interested+in+your+services!"
           ><button
-            class="px-4 py-2 sm:px-6 sm:py-3 bg-gray-700 hover:bg-gray-500 transition rounded-md font-bold text-sm sm:text-base"
+            class="px-4 py-2 sm:px-6 sm:py-3 bg-gray-700 hover:bg-gray-500 transition rounded-md font-bold text-sm sm:text-base transition-all ease-in-out duration-500"
           >
             Hire Me
           </button></a
@@ -692,10 +693,7 @@
       btnCurtain2.addEventListener("click", () => {
         curtain2.classList.add("translate-x-full");
       });
-    </script>
 
-    <!-- Scripts (Hujan, Cursor Glow, dll.) -->
-    <script>
       // Smooth Scroll
       document.querySelectorAll("nav a").forEach((anchor) => {
         anchor.addEventListener("click", function (e) {

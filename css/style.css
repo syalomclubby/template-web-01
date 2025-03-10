@@ -30,7 +30,6 @@ html {
   padding: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
-  overflow-x: auto;
 }
 
 .cursor {
@@ -145,7 +144,6 @@ body {
     /* Linear gradient: dominan hitam di atas */
       linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
   color: white;
-  overflow-x: hidden;
   position: relative;
 }
 
