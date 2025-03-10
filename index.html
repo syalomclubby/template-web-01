@@ -33,6 +33,16 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
   <body class="relative">
+    <div
+      id="progress-container"
+      class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50"
+    >
+      <div
+        id="progress-bar"
+        class="h-full bg-[#4a6fa5] transition-all duration-100"
+      ></div>
+    </div>
+
     <button
       id="scrollTopBtn"
       class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
@@ -1102,6 +1112,17 @@
         function easeInOutCubic(t) {
           return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
+      });
+
+      window.addEventListener("scroll", () => {
+        const progressBar = document.getElementById("progress-bar");
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + "%";
       });
     </script>
   </body>

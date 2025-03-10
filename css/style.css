@@ -166,7 +166,10 @@ body {
   }
 }
 
-/* Blur Circles */
+#progress-bar {
+  transition: width 0.1s ease-out;
+}
+
 /* Container for background circles in Tech Stack Section */
 .tech-bg-circles {
   position: absolute;
