@@ -1,5 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
+/* Untuk browser WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Lebar scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #ebebeb; /* Warna track abu-abu gelap */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a6fa5; /* Warna thumb sesuai primary */
+  border-radius: 10px; /* Ujung thumb membulat */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a5f95; /* Warna thumb saat hover (sedikit lebih gelap) */
+}
+
+/* Untuk Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #4a6fa5 #ebebeb; /* Format: thumb, track */
+}
+
 body,
 html {
   margin: 0;
@@ -123,7 +147,6 @@ body {
   color: white;
   overflow-x: hidden;
   position: relative;
-  z-index: 0;
 }
 
 /* Mobile: turunkan opacity ungu */
