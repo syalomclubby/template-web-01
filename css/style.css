@@ -312,8 +312,9 @@ body {
   }
 }
 
-#progress-bar {
-  transition: width 0.1s ease-out;
+.experience-card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
 }
 
 /* Container for background circles in Tech Stack Section */

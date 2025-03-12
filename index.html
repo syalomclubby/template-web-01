@@ -36,16 +36,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
   <body class="relative">
-    <div
-      id="progress-container"
-      class="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50"
-    >
-      <div
-        id="progress-bar"
-        class="h-full bg-[#4a6fa5] transition-all duration-100"
-      ></div>
-    </div>
-
     <button
       id="scrollTopBtn"
       class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
@@ -291,51 +281,204 @@
     <!-- 🔹 Experience Section -->
     <section
       id="experience"
-      class="py-10 sm:py-20 bg-[#243044] min-h-screen flex items-center justify-center"
+      class="bg-[#243044] min-h-screen pt-16 pb-10 px-10 /* padding horizontal di mobile */ sm:px-14 /* lebih besar di sm ke atas */ md:px-20 /* lebih besar di md ke atas */"
     >
-      <div class="text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-[#4a6fa5] mb-6 sm:mb-10">
-          Experience
-        </h2>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
-        >
+      <!-- Container -->
+      <div class="max-w-6xl mx-auto">
+        <!-- Judul & Subjudul -->
+        <div class="text-center mb-8">
+          <!-- Judul utama -->
+          <h2
+            class="text-4xl sm:text-5xl font-extrabold text-white uppercase tracking-wide"
+          >
+            Experience
+          </h2>
+          <!-- Subjudul dengan jarak antar huruf -->
+          <p
+            class="text-gray-300 text-base sm:text-lg mt-1 tracking-[0.5em] uppercase"
+          >
+            Highlights
+          </p>
+        </div>
+
+        <!-- Grid Card -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
           <!-- Card 1 -->
           <div
-            class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-white/10 backdrop-blur-md border border-white/20 shadow-xl transition-all duration-500 hover:scale-105 mx-auto"
+            class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-6 sm:p-8 flex flex-col justify-between text-left transition-transform duration-500 hover:-translate-y-2"
           >
-            <i class="fas fa-code text-4xl sm:text-5xl text-[#4a6fa5]"></i>
-            <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">
-              Frontend Developer
-            </h3>
-            <p class="text-gray-300 mt-2 text-sm sm:text-base">
-              Developed UI/UX using modern frameworks like Laravel and Tailwind.
-            </p>
+            <!-- Ikon Custom -->
+            <div class="mb-4 mx-auto">
+              <svg
+                width="60"
+                height="60"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="text-[#4a6fa5]"
+              >
+                <!-- Contoh ikon "frontend" -->
+                <rect
+                  x="2"
+                  y="2"
+                  width="60"
+                  height="60"
+                  rx="10"
+                  fill="currentColor"
+                  opacity="0.1"
+                />
+                <path
+                  d="M16 24 L24 32 L16 40"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M48 24 L40 32 L48 40"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <rect
+                  x="2"
+                  y="2"
+                  width="60"
+                  height="60"
+                  rx="10"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">
+                Frontend Developer
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base">
+                Building modern UIs with React, Tailwind, and responsive design.
+              </p>
+            </div>
           </div>
+
           <!-- Card 2 -->
           <div
-            class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-white/10 backdrop-blur-md border border-white/20 bg-opacity-80 shadow-xl transition-all duration-500 hover:scale-105 mx-auto"
+            class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-6 sm:p-8 flex flex-col justify-between text-left transition-transform duration-500 hover:-translate-y-2"
           >
-            <i class="fas fa-database text-4xl sm:text-5xl text-[#4a6fa5]"></i>
-            <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">
-              Backend Developer
-            </h3>
-            <p class="text-gray-300 mt-2 text-sm sm:text-base">
-              Built robust APIs and handled databases using MySql and Node.js.
-            </p>
+            <div class="mb-4 mx-auto">
+              <svg
+                width="60"
+                height="60"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="text-[#4a6fa5]"
+              >
+                <!-- Contoh ikon "backend" -->
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="22"
+                  fill="currentColor"
+                  opacity="0.1"
+                />
+                <path
+                  d="M20 32 A12 12 0 0 1 44 32"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M24 28 v8"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M40 28 v8"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="22"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">
+                Backend Developer
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base">
+                Designing robust APIs &amp; managing data with Node.js, Express,
+                MongoDB.
+              </p>
+            </div>
           </div>
+
           <!-- Card 3 -->
           <div
-            class="glass p-6 sm:p-8 rounded-xl text-center w-64 sm:w-80 h-52 sm:h-60 bg-white/10 backdrop-blur-md border border-white/20 shadow-xl transition-all duration-500 hover:scale-105 mx-auto"
+            class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-lg p-6 sm:p-8 flex flex-col justify-between text-left transition-transform duration-500 hover:-translate-y-2"
           >
-            <i class="fas fa-server text-4xl sm:text-5xl text-[#4a6fa5]"></i>
-            <h3 class="text-xl sm:text-2xl font-semibold mt-4 text-white">
-              MC Server Developer
-            </h3>
-            <p class="text-gray-300 mt-2 text-sm sm:text-base">
-              Built and optimized Minecraft servers using Papermc, ensuring high
-              performance for players.
-            </p>
+            <div class="mb-4 mx-auto">
+              <svg
+                width="60"
+                height="60"
+                viewBox="0 0 64 64"
+                fill="none"
+                class="text-[#4a6fa5]"
+              >
+                <!-- Contoh ikon "MC server" -->
+                <rect
+                  x="10"
+                  y="18"
+                  width="44"
+                  height="28"
+                  rx="4"
+                  fill="currentColor"
+                  opacity="0.1"
+                />
+                <path
+                  d="M14 26 H50 V38 H14 Z"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M22 22 V42"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M42 22 V42"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="10"
+                  y="18"
+                  width="44"
+                  height="28"
+                  rx="4"
+                  stroke="currentColor"
+                  stroke-width="3"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl sm:text-2xl font-semibold text-white mb-2">
+                MC Server Developer
+              </h3>
+              <p class="text-gray-300 text-sm sm:text-base">
+                Optimizing Minecraft servers using PaperMC &amp; custom plugins.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -1166,17 +1309,6 @@
         function easeInOutCubic(t) {
           return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
-      });
-
-      window.addEventListener("scroll", () => {
-        const progressBar = document.getElementById("progress-bar");
-        const scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        const docHeight =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + "%";
       });
     </script>
   </body>
