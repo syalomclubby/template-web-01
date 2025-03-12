@@ -32,6 +32,102 @@ html {
     sans-serif;
 }
 
+/* Header Card */
+.glass-about > div:first-child {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+svg {
+  pointer-events: none; /* Agar tidak menghalangi klik */
+  transform: rotate(10deg); /* Sesuaikan rotasi teks */
+}
+text {
+  letter-spacing: 2px; /* Atur spasi antar huruf */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  pointer-events: none; /* Agar tidak mengganggu interaksi */
+  transition: transform 0.9s ease-in-out;
+}
+
+.group:hover .circle-text {
+  transform: translate(-50%, -50%) rotate3d(1, 1, 0, 60deg);
+}
+
+.circle-card {
+  background: linear-gradient(135deg, #4a6fa5, #334155);
+  height: 220px;
+  width: 220px;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  position: relative;
+}
+
+.circle-card .circle i {
+  color: rgba(255, 255, 255, 0.7);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.circle {
+  background: linear-gradient(#ffffff27, #ffffff28);
+  border-radius: inherit;
+  position: absolute;
+  box-shadow: -5px 5px 10px #64646f33;
+  transition: all 1s ease-in-out;
+}
+
+.circle:nth-child(1) {
+  inset: 10px;
+  transition-delay: 0.1s;
+}
+.circle:nth-child(2) {
+  inset: 30px;
+  transition-delay: 0.2s;
+}
+.circle:nth-child(3) {
+  inset: 50px;
+  transition-delay: 0.3s;
+}
+.circle:nth-child(4) {
+  inset: 70px;
+  transition-delay: 0.4s;
+}
+
+/* Efek Hover */
+.circle-card:hover {
+  transform: rotate3d(1, 1, 0, 60deg);
+}
+
+.circle-card:hover .circle:nth-child(1) {
+  transform: translate3d(0, 0, 20px);
+}
+.circle-card:hover .circle:nth-child(2) {
+  transform: translate3d(0, 0, 40px);
+}
+.circle-card:hover .circle:nth-child(3) {
+  transform: translate3d(0, 0, 60px);
+}
+.circle-card:hover .circle:nth-child(4) {
+  transform: translate3d(0, 0, 80px);
+}
+
 .cursor {
   display: inline-block;
   width: 1px;
@@ -86,7 +182,7 @@ html {
   display: flex;
   align-items: center;
   gap: 8px;
-  background:rgba(74, 110, 165, 0.05);
+  background: rgba(74, 110, 165, 0.05);
   border: 1px solid rgba(74, 110, 165, 0.46);
   padding: 5px 12px;
   border-radius: 20px;
@@ -99,7 +195,7 @@ html {
   position: relative;
   width: 6px;
   height: 6px;
-  background:rgb(1, 212, 114); /* Warna utama hijau */
+  background: rgb(1, 212, 114); /* Warna utama hijau */
   border-radius: 50%;
   box-shadow: 0 0 8px #00ff88;
 }
@@ -175,8 +271,8 @@ html {
   backdrop-filter: blur(15px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  max-width: 80%;
+  padding: 2.5rem;
+  max-width: 90%;
   margin: 0 auto;
 }
 

@@ -211,16 +211,23 @@
     <!-- 🔹 About Section -->
     <section
       id="about"
-      class="min-h-[70vh] flex items-center justify-center px-4 sm:px-10 mt-2 sm:mt-4 mb-8 sm:mb-10"
+      class="min-h-[80vh] flex items-center justify-center px-10 sm:px-20 mt-2 sm:mt-4 mb-12 sm:mb-14"
     >
       <div
-        class="glass-about flex flex-col md:flex-row items-center w-full max-w-6xl gap-6 py-6 sm:py-10"
+        class="glass-about flex flex-col md:flex-row items-center w-full max-w-6xl gap-6 py-6 sm:py-10 relative"
       >
+        <!-- Header Card -->
+        <div
+          class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full shadow-md"
+        >
+          <h2 class="text-lg sm:text-xl font-semibold text-white">About Me</h2>
+        </div>
+
         <!-- Bagian Kiri: Teks -->
-        <div class="md:w-1/2 text-center sm:text-left">
-          <h2 class="text-3xl sm:text-4xl font-bold text-[#4a6fa5] mb-4">
-            About Me
-          </h2>
+        <div class="md:w-1/2 text-center sm:text-left mt-8">
+          <h3 class="text-2xl sm:text-3xl font-bold text-[#4a6fa5] mb-4">
+            Who Am I?
+          </h3>
           <p class="text-base sm:text-lg text-gray-300">
             I am a musician proficient in guitar and piano. In addition, I have
             strong skills in music composition. I have also been passionate
@@ -228,13 +235,55 @@
             technologies and honing my development skills.
           </p>
         </div>
-        <!-- Bagian Kanan: Foto -->
-        <div class="md:w-1/2 flex justify-center">
-          <img
-            src="images/globe.png"
-            alt="Profile"
-            class="rounded-lg w-48 sm:w-80 max-w-full h-auto object-cover"
-          />
+
+        <!-- Bagian Kanan: 3D Lingkaran Berlapis dengan Link -->
+        <div
+          class="md:w-1/2 flex flex-col justify-center items-center relative mt-8"
+        >
+          <a
+            href="https://github.com/syalomclubby"
+            target="_blank"
+            class="group relative flex justify-center items-center"
+          >
+            <svg
+              width="300"
+              height="300"
+              viewBox="0 0 300 300"
+              class="circle-text transition-transform duration-500"
+            >
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M 150, 150
+                  m -120, 0
+                  a 120,120 0 1,1 240,0
+                  a 120,120 0 1,1 -240,0"
+                ></path>
+              </defs>
+              <text fill="white" font-size="16">
+                <textPath
+                  xlink:href="#circlePath"
+                  startOffset="50%"
+                  text-anchor="middle"
+                >
+                  VISIT MY
+                  <tspan fill="white">•</tspan>
+                  <tspan fill="#4a6fa5">GITHUB</tspan>
+                </textPath>
+              </text>
+            </svg>
+
+            <div class="circle-card">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle flex justify-center items-center">
+                <i
+                  class="text-5xl fa-brands fa-github text-white opacity-80 transition duration-300 group-hover:opacity-100 group-hover:scale-110"
+                ></i>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
