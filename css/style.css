@@ -46,10 +46,6 @@ html {
   text-align: center;
 }
 
-svg {
-  pointer-events: none; /* Agar tidak menghalangi klik */
-  transform: rotate(10deg); /* Sesuaikan rotasi teks */
-}
 text {
   letter-spacing: 2px; /* Atur spasi antar huruf */
   text-transform: uppercase;
@@ -62,8 +58,9 @@ text {
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center;
-  pointer-events: none; /* Agar tidak mengganggu interaksi */
-  transition: transform 0.9s ease-in-out;
+  pointer-events: none; /* Agar tidak menghalangi klik */
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
 }
 
 .group:hover .circle-text {
