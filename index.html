@@ -84,43 +84,19 @@
     <canvas id="rainCanvas"></canvas>
 
     <!-- 🔹 Navbar -->
+    <!-- Header -->
     <header
       id="navbar"
-      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-40 flex items-center justify-between px-6 h-16 transition-all duration-300 ease-in-out"
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-40 flex items-center justify-between px-6 h-16 bg-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out"
     >
       <!-- Logo -->
-      <div id="typewriter" class="font-thin text-xl"></div>
+      <div id="typewriter" class="font-thin text-xl">Web Developer</div>
 
-      <!-- Menu Desktop -->
-      <nav class="hidden md:flex space-x-6">
-        <a
-          href="#home"
-          class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
-          >Home</a
-        >
-        <a
-          href="#about"
-          class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
-          >About</a
-        >
-        <a
-          href="#experience"
-          class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
-          >Experience</a
-        >
-        <a
-          href="#projects"
-          class="hover:text-[#4a6fa5] transition-all ease-in-out duration-500"
-          >Projects</a
-        >
-      </nav>
-
-      <!-- Hamburger (mobile) -->
+      <!-- Tombol Hamburger -->
       <button
         id="navToggle"
-        class="md:hidden relative w-8 h-8 flex items-center justify-center rounded-md border border border-white/20 focus:outline-none transition-all duration-300"
+        class="relative w-8 h-8 flex items-center justify-center rounded-md border border-white/20 focus:outline-none transition-all duration-300"
       >
-        <!-- Kontainer garis hamburger -->
         <div class="hamburger">
           <span class="line1"></span>
           <span class="line2"></span>
@@ -129,17 +105,20 @@
       </button>
     </header>
 
-    <!-- Menu Mobile -->
+    <!-- Wadah Menu (posisi & lebar sama dengan header) -->
     <div
       id="mobileMenu"
-      class="hidden md:hidden fixed top-16 mt-8 left-1/2 -translate-x-1/2 w-[90%] bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-4 rounded-lg z-40 shadow-lg scale-y-0 opacity-0 origin-top transition-all duration-300 ease-in-out"
+      class="hidden fixed mt-8 top-16 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-end z-50 opacity-0 -translate-y-4 transition-all duration-300 ease-out"
     >
-      <a href="#home" class="block py-2 hover:text-[#4a6fa5]">Home</a>
-      <a href="#about" class="block py-2 hover:text-[#4a6fa5]">About</a>
-      <a href="#experience" class="block py-2 hover:text-[#4a6fa5]"
-        >Experience</a
+      <!-- Panel Menu -->
+      <div
+        class="w-56 bg-white/10 backdrop-blur-md text-white p-4 space-y-4 rounded-xl shadow-lg max-h-[80vh] overflow-y-auto"
       >
-      <a href="#projects" class="block py-2 hover:text-[#4a6fa5]">Projects</a>
+        <a href="#home" class="block hover:text-[#4a6fa5]">Home</a>
+        <a href="#about" class="block hover:text-[#4a6fa5]">About</a>
+        <a href="#experience" class="block hover:text-[#4a6fa5]">Experience</a>
+        <a href="#projects" class="block hover:text-[#4a6fa5]">Projects</a>
+      </div>
     </div>
 
     <!-- 🔹 Hero Section -->
@@ -184,7 +163,7 @@
       <!-- Tombol CTA -->
       <div>
         <a
-          href="#"
+          href="mailto:syallom06@gmail.com"
           class="inline-block px-6 py-2 bg-[#4a6fa5] text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
         >
           Book a call
@@ -955,25 +934,22 @@
       }
       drawRain();
 
-      const navbar = document.getElementById("navbar");
       const navToggle = document.getElementById("navToggle");
       const mobileMenu = document.getElementById("mobileMenu");
 
-      // Hamburger Toggle
       navToggle.addEventListener("click", () => {
-        // Ganti animasi garis → “X”
+        // Animasi hamburger ke "X" (jika Anda punya CSS untuk itu)
         navToggle.classList.toggle("hamburger-active");
 
-        // Tampilkan/sembunyikan menu mobile
         if (mobileMenu.classList.contains("hidden")) {
           // Buka menu
           mobileMenu.classList.remove("hidden");
           setTimeout(() => {
-            mobileMenu.classList.remove("scale-y-0", "opacity-0");
+            mobileMenu.classList.remove("opacity-0", "-translate-y-4");
           }, 10);
         } else {
           // Tutup menu
-          mobileMenu.classList.add("scale-y-0", "opacity-0");
+          mobileMenu.classList.add("opacity-0", "-translate-y-4");
           setTimeout(() => {
             mobileMenu.classList.add("hidden");
           }, 300);
