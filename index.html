@@ -85,25 +85,38 @@
     <canvas id="rainCanvas"></canvas>
 
     <!-- 🔹 Navbar -->
-    <!-- Header -->
     <header
       id="navbar"
-      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-40 flex items-center justify-between px-6 h-16 transition-all duration-300 ease-in-out"
+      class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-40 flex items-center justify-between px-6 h-16 transition-all duration-300 ease-in-out text-white"
     >
       <!-- Logo -->
       <div id="typewriter" class="font-thin text-xl">Web Developer</div>
 
-      <!-- Tombol Hamburger -->
-      <button
-        id="navToggle"
-        class="relative w-8 h-8 flex items-center justify-center rounded-md border border-white/20 focus:outline-none transition-all duration-300"
-      >
-        <div class="hamburger">
-          <span class="line1"></span>
-          <span class="line2"></span>
-          <span class="line3"></span>
-        </div>
-      </button>
+      <!-- Ikon Sosial Media dan Tombol Hamburger -->
+      <div class="flex items-center space-x-4">
+        <!-- Ikon Sosial Media -->
+        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+          ><i class="fab fa-linkedin mr-2"></i
+        ></a>
+
+        <!-- Tombol Hamburger -->
+        <button
+          id="navToggle"
+          class="relative w-8 h-8 flex items-center justify-center rounded-md border border-white/20 focus:outline-none transition-all duration-300"
+        >
+          <div class="hamburger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+          </div>
+        </button>
+      </div>
     </header>
 
     <!-- Wadah Menu (posisi & lebar sama dengan header) -->
@@ -762,19 +775,29 @@
         curtain2.classList.add("translate-x-full");
       });
 
-      // Smooth Scroll
-      document.querySelectorAll("nav a").forEach((anchor) => {
+      // Fungsi untuk menangani animasi scroll ke section
+      document.querySelectorAll("#mobileMenu a").forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href");
-          const targetElement = document.querySelector(targetId);
+          e.preventDefault(); // Mencegah perilaku default dari tautan
+
+          const targetId = this.getAttribute("href"); // Ambil ID target dari href
+          const targetElement = document.querySelector(targetId); // Cari elemen target
+
           if (targetElement) {
+            // Animasi scroll ke elemen target
             window.scrollTo({
-              top:
-                targetElement.offsetTop -
-                (window.innerHeight - targetElement.clientHeight),
+              top: targetElement.offsetTop,
               behavior: "smooth",
             });
+
+            // Tutup menu mobile setelah klik
+            mobileMenu.classList.add("opacity-0", "-translate-y-4");
+            setTimeout(() => {
+              mobileMenu.classList.add("hidden");
+            }, 300); // Sesuaikan durasi dengan CSS
+
+            // Reset animasi hamburger
+            navToggle.classList.remove("hamburger-active");
           }
         });
       });
@@ -935,11 +958,14 @@
       }
       drawRain();
 
+      // Ambil elemen-elemen yang diperlukan
+      // Ambil elemen-elemen yang diperlukan
       const navToggle = document.getElementById("navToggle");
       const mobileMenu = document.getElementById("mobileMenu");
 
+      // Fungsi untuk menangani toggle menu mobile
       navToggle.addEventListener("click", () => {
-        // Animasi hamburger ke "X" (jika Anda punya CSS untuk itu)
+        // Toggle animasi hamburger ke "X" (pastikan ada CSS untuk ini)
         navToggle.classList.toggle("hamburger-active");
 
         if (mobileMenu.classList.contains("hidden")) {
@@ -953,7 +979,7 @@
           mobileMenu.classList.add("opacity-0", "-translate-y-4");
           setTimeout(() => {
             mobileMenu.classList.add("hidden");
-          }, 300);
+          }, 300); // Sesuaikan durasi dengan CSS
         }
       });
 
