@@ -37,6 +37,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
   <body class="relative">
+    <audio id="bgMusic" autoplay loop>
+      <source src="audio/Space Ambience Atmosphere Free Sound Effect.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
     <button
       id="scrollTopBtn"
       class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
@@ -95,13 +99,13 @@
       <!-- Ikon Sosial Media dan Tombol Hamburger -->
       <div class="flex items-center space-x-4">
         <!-- Ikon Sosial Media -->
-        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+        <a href="https://instagram.com/syalom_lyz" target="_blank" class="text-white hover:text-[#4a6fa5]"
           ><i class="fab fa-instagram"></i
         ></a>
-        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+        <a href="https://wa.me/6283151431158" target="_blank" class="text-white hover:text-[#4a6fa5]"
           ><i class="fab fa-whatsapp"></i
         ></a>
-        <a href="#" target="_blank" class="text-white hover:text-[#4a6fa5]"
+        <a href="https://linkedin.com/in/syalom-layezar" target="_blank" class="text-white hover:text-[#4a6fa5]"
           ><i class="fab fa-linkedin mr-2"></i
         ></a>
 
@@ -758,6 +762,17 @@
 
     <!-- SCRIPT: Menggeser overlay tirai saat tombol di-klik -->
     <script>
+      // Ambil elemen audio
+      const bgMusic = document.getElementById("bgMusic");
+
+      // Pastikan musik diputar otomatis
+      window.addEventListener("load", () => {
+        bgMusic.volume = 0.3; // Atur volume (nilai antara 0.0 - 1.0)
+        bgMusic.play().catch((error) => {
+          console.error("Autoplay failed:", error);
+        });
+      });
+
       // Project 1
       const btnCurtain1 = document.getElementById("btnCurtain1");
       const curtain1 = document.getElementById("curtain1");
@@ -1053,11 +1068,7 @@
         tl.to({}, { duration: 0.5 });
       });
 
-      const messages = [
-        "Hello",
-        "Welcome",
-        "I'm Syalom",
-      ];
+      const messages = ["Hello", "Welcome", "I'm Syalom"];
 
       const typewriterEl = document.getElementById("typewriter");
 
