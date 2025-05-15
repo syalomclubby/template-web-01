@@ -33,20 +33,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
 
-    <!-- Link AOS CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-      rel="stylesheet"
-    />
-    <!-- AOS CSS file to enable scroll animations -->
-    <!-- 
-      AOS Animation Settings:
-      data-aos="fade-up"       => Defines the animation type. "fade-up" fades in the element while moving it upward.
-      data-aos-duration="800"  => Duration of the animation in milliseconds (800ms in this case).
-      For more animation types and options, visit the official documentation:
-      https://michalsnik.github.io/aos/
-    -->
-
     <!-- Lenis Smooth Scroll Library -->
     <link
       rel="stylesheet"
@@ -342,8 +328,6 @@
         Centers content and provides padding/margin for spacing.
       -->
       <div
-        data-aos="fade-up"
-        data-aos-duration="800"
         class="glass-about flex flex-col md:flex-row items-center w-full max-w-6xl gap-6 py-6 sm:py-10 relative"
       >
         <!--
@@ -475,8 +459,6 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <!-- Card 1 -->
           <div
-            data-aos="fade-up"
-            data-aos-duration="800"
             class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
           >
             <!-- Position Title -->
@@ -506,8 +488,6 @@
 
           <!-- Card 2 -->
           <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
             class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
           >
             <h3 class="text-lg sm:text-xl font-semibold text-[#4a6fa5]">
@@ -533,8 +513,6 @@
 
           <!-- Card 3 -->
           <div
-            data-aos="fade-up"
-            data-aos-duration="1200"
             class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
           >
             <h3 class="text-lg sm:text-xl font-semibold text-[#4a6fa5]">
@@ -579,28 +557,16 @@
 
       <!-- Section Title -->
       <div class="max-w-2xl text-center px-4">
-        <h2
-          data-aos="fade-up"
-          data-aos-duration="800"
-          class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a6fa5]"
-        >
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a6fa5]">
           I'm currently looking to join a cross‑functional team
         </h2>
-        <p
-          data-aos="fade-up"
-          data-aos-duration="1200"
-          class="mt-2 text-sm sm:text-base md:text-lg text-gray-300"
-        >
+        <p class="mt-2 text-sm sm:text-base md:text-lg text-gray-300">
           that values improving people’s lives through accessible design
         </p>
       </div>
 
       <!-- SVG Container (responsive wrapper) -->
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1600"
-        class="w-[95%] sm:w-[80%] mx-auto mt-8 flex justify-center"
-      >
+      <div class="w-[95%] sm:w-[80%] mx-auto mt-8 flex justify-center">
         <svg
           viewBox="0 0 1000 600"
           style="width: 100%; height: auto; max-width: 1000px"
@@ -872,11 +838,7 @@
           class="relative flex flex-col sm:flex-row items-center justify-center"
         >
           <!-- Left Column: Title & Description -->
-          <div
-            data-aos="fade-up"
-            data-aos-duration="800"
-            class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-left"
-          >
+          <div class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-left">
             <!-- Project Label -->
             <span class="block text-xs uppercase text-[#4a6fa5] mb-1">
               Project One
@@ -899,11 +861,7 @@
           </div>
 
           <!-- Right Column: Image & View Button -->
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="sm:w-1/2 flex justify-center"
-          >
+          <div class="sm:w-1/2 flex justify-center">
             <div class="relative w-full sm:w-auto rounded-lg overflow-hidden">
               <!-- Button Overlay (Fixed Position Over Image) -->
               <div
@@ -938,11 +896,7 @@
           class="relative flex flex-col sm:flex-row-reverse items-center justify-center"
         >
           <!-- Right Column: Title & Description -->
-          <div
-            data-aos="fade-up"
-            data-aos-duration="800"
-            class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-right"
-          >
+          <div class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-right">
             <!-- Project Label -->
             <span class="block text-xs uppercase text-[#4a6fa5] mb-1">
               Project Two
@@ -965,11 +919,7 @@
           </div>
 
           <!-- Left Column: Image & View Button -->
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="sm:w-1/2 flex justify-center"
-          >
+          <div class="sm:w-1/2 flex justify-center">
             <div class="relative w-full sm:w-auto rounded-lg overflow-hidden">
               <!-- Button Overlay -->
               <div
@@ -1017,9 +967,5 @@
     </footer>
 
     <script src="js/script.js" defer type="module"></script>
-
-    <!-- Script AOS JS (before closing body tag) -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <!-- AOS JavaScript file to control animations -->
   </body>
 </html>
