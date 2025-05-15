@@ -16,6 +16,19 @@ function throttle(fn, wait) {
 }
 
 // ======================
+// Library Init: AOS (Animate On Scroll)
+// ----------------------
+// Initializes AOS library to animate elements on scroll.
+// Automatically applies effects defined via data-aos attributes.
+// Docs: https://michalsnik.github.io/aos/
+AOS.init({
+  once: true, // Whether animation should happen only once
+  easing: "ease-in-out", // Easing function for the animation
+  offset: 50, // Offset (in px) from the original trigger point
+  mirror: false, // Whether elements should animate out while scrolling past them
+});
+
+// ======================
 // Mobile Menu (Navbar)
 // ----------------------
 // HTML: <button id="navToggle">…</button> & <div id="mobileMenu">…</div> (below <header>)
