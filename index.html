@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
+    <!-- Basic Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#4a6fa5" />
-    <meta name="og:image" content="/images/logo.png" />
-    <title>Syalom - Portfolio</title>
+    <meta name="og:image" content="/images/logos/main-logo" />
+    <title>Username - Portfolio</title>
+
+    <!-- Favicon and Icons -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
-    <link rel="apple-touch-icon" href="images/logo.png" />
-    <link rel="bookmark" href="images/logo.png" />
-    <link rel="Shortcut Icon" href="images/logo.png" />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="apple-touch-icon" href="images/logos/main-logo" />
+    <link rel="bookmark" href="images/logos/main-logo" />
+    <link rel="shortcut icon" href="images/logos/main-logo" />
 
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <!-- Fonts: Fira Code from Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@100;200;300;400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Lenis Smooth Scroll Library -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/lenis@1.2.0/dist/lenis.css"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
-    <!-- Three.js (versi yang didukung Vanta.js) -->
+
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Three.js (compatible version for Vanta.js) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
 
-    <!-- Vanta.js Globe effect -->
+    <!-- Vanta.js Globe Effect -->
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   </head>
   <body class="relative">
-    <audio id="bgMusic" autoplay loop>
-      <source src="audio/Space Ambience Atmosphere Free Sound Effect.mp3" type="audio/mp3" />
-      Your browser does not support the audio element.
-    </audio>
+    <!--
+      Scroll to Top Button
+      --------------------
+      This button appears fixed at the bottom-right corner of the screen.
+      When clicked, it smoothly scrolls the page back to the top.
+      It is useful for users who have scrolled down a long page, 
+      providing a quick way to return to the beginning without manual scrolling.
+    -->
     <button
       id="scrollTopBtn"
       class="fixed bottom-5 right-5 w-12 h-12 flex items-center justify-center bg-[#4a6fa5] text-white rounded-full shadow-lg z-[9998]"
@@ -49,13 +66,22 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+    <!--
+    Custom Cursor Container (can be used for a custom mouse cursor effect)
+    -->
     <div id="customCursor"></div>
-    <!-- LOADER 1: Diamond Loader -->
+
+    <!--
+    LOADER : Diamond Loader
+    -----------------------
+    This loader appears fullscreen with a dark background and shows a diamond-shaped grid 
+    of small squares rotating or animating while the page content is loading.
+    -->
+
     <div
       id="loader"
       class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#141A24]"
     >
-      <!-- Container diamond: grid 3×3 dengan gap kecil, diputar 45° untuk membentuk diamond -->
       <div
         id="diamond"
         class="grid grid-cols-3 gap-1 transform rotate-45 origin-center"
@@ -73,7 +99,14 @@
       </div>
     </div>
 
-    <!-- 🔹 Background Circles -->
+    <!--
+    Background Circles
+    ------------------
+    These are decorative circles placed behind the main content as part of the background.
+    They create a subtle, modern visual effect to enhance the page’s design.
+    The circles are absolutely positioned with a negative z-index, so they don't interfere 
+    with clickable content on top.
+    -->
     <div class="tech-bg-circles absolute inset-0 -z-10">
       <div class="bg-circle circle-1"></div>
       <div class="bg-circle circle-2"></div>
@@ -85,31 +118,77 @@
       <div class="bg-circle circle-8"></div>
     </div>
 
-    <!-- 🔹 Navbar -->
+    <!-- Navbar -->
     <header
       id="navbar"
       class="fixed top-0 left-1/2 transform -translate-x-1/2 w-[90%] z-40 flex items-center justify-between px-6 h-16 transition-all duration-300 ease-in-out text-white"
     >
-      <!-- Logo -->
-      <div id="typewriter" class="font-thin text-xl">Web Developer</div>
+      <!--
+        Site Title / Logo Area
+        -----------------------
+        Displays a typewriter effect text. You can replace the text content
+        or target the #typewriter ID in JavaScript to change the animation.
+      -->
+      <div id="typewriter" class="font-thin text-xl"></div>
 
-      <!-- Ikon Sosial Media dan Tombol Hamburger -->
+      <!--
+        Social Icons & Hamburger Menu Container
+        ---------------------------------------
+        Holds social media links and the mobile menu toggle button.
+      -->
       <div class="flex items-center space-x-4">
-        <!-- Ikon Sosial Media -->
-        <a href="https://instagram.com/syalom_lyz" target="_blank" class="text-white hover:text-[#4a6fa5]"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a href="https://wa.me/6283151431158" target="_blank" class="text-white hover:text-[#4a6fa5]"
-          ><i class="fab fa-whatsapp"></i
-        ></a>
-        <a href="https://linkedin.com/in/syalom-layezar" target="_blank" class="text-white hover:text-[#4a6fa5]"
-          ><i class="fab fa-linkedin mr-2"></i
-        ></a>
+        <!--
+          Instagram Icon Link
+          -------------------
+          Opens your Instagram profile in a new tab.
+        -->
+        <a
+          href="https://instagram.com/username"
+          target="_blank"
+          class="text-white hover:text-[#4a6fa5]"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
 
-        <!-- Tombol Hamburger -->
+        <!--
+          WhatsApp Icon Link
+          ------------------
+          Opens a WhatsApp chat in a new tab.
+        -->
+        <a
+          href="https://wa.me/phonenumber"
+          target="_blank"
+          class="text-white hover:text-[#4a6fa5]"
+          aria-label="WhatsApp"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!--
+          LinkedIn Icon Link
+          ------------------
+          Opens your LinkedIn profile in a new tab.
+        -->
+        <a
+          href="https://linkedin.com/in/username"
+          target="_blank"
+          class="text-white hover:text-[#4a6fa5]"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin mr-2"></i>
+        </a>
+
+        <!--
+          Hamburger Menu Toggle Button
+          ----------------------------
+          Toggles the mobile navigation menu when clicked.
+          Targeted by JavaScript via the #navToggle ID.
+        -->
         <button
           id="navToggle"
           class="relative w-8 h-8 flex items-center justify-center rounded-md border border-white/20 focus:outline-none transition-all duration-300"
+          aria-label="Toggle menu"
         >
           <div class="hamburger">
             <span class="line1"></span>
@@ -120,15 +199,26 @@
       </div>
     </header>
 
-    <!-- Wadah Menu (posisi & lebar sama dengan header) -->
+    <!--
+      Mobile Menu Container
+      ---------------------
+      This hidden panel is positioned directly below the main header.
+      It slides into view on mobile when the hamburger button (#navToggle) is toggled.
+    -->
     <div
       id="mobileMenu"
       class="hidden fixed mt-8 top-16 left-1/2 transform -translate-x-1/2 w-[90%] flex justify-end z-50 opacity-0 -translate-y-4 transition-all duration-300 ease-out"
     >
-      <!-- Panel Menu -->
+      <!--
+        Mobile Menu Panel
+        -----------------
+        A semi-transparent, blur-backed panel containing navigation links.
+        Users can scroll if the content exceeds 80% of viewport height.
+      -->
       <div
         class="w-56 bg-white/10 backdrop-blur-md text-white p-4 space-y-4 rounded-xl shadow-lg max-h-[80vh] overflow-y-auto"
       >
+        <!-- Navigation Links -->
         <a href="#home" class="block hover:text-[#4a6fa5]">Home</a>
         <a href="#about" class="block hover:text-[#4a6fa5]">About</a>
         <a href="#experience" class="block hover:text-[#4a6fa5]">Experience</a>
@@ -136,33 +226,53 @@
       </div>
     </div>
 
-    <!-- 🔹 Hero Section -->
+    <!-- HERO SECTION -->
     <section
       id="home"
       class="w-[90%] mx-auto min-h-screen flex flex-col justify-center px-4 py-8 text-left"
     >
-      <!-- Badge "Open to work" -->
+      <!--
+        Hero Section
+        ------------
+        The main landing area with a badge, profile image, headline, subheadline,
+        brief description, and a call-to-action button.
+      -->
+
+      <!--
+        Status Badge
+        ------------
+        Displays a small indicator (e.g., "Open to work") above the headline.
+      -->
       <div class="status-badge mb-5">
         <span class="dot"></span>
         <span class="text">Open to work</span>
       </div>
 
-      <!-- Bagian Atas: Headline & Foto -->
+      <!--
+        Headline & Profile Image
+        -------------------------
+        Shows your profile photo alongside a greeting headline.
+        You can replace the image source and text as needed.
+      -->
       <div class="flex items-center flex-wrap gap-4 mb-4">
-        <!-- Foto Profil (opsional) -->
+        <!-- Profile Photo (optional) -->
         <img
-          src="images/logo.png"
+          src="images/logos/profile-logo.png"
           alt="Your Photo"
           class="w-16 h-16 rounded-full object-cover"
         />
-        <!-- Headline -->
+        <!-- Greeting Headline -->
         <h1 class="text-2xl sm:text-3xl font-bold leading-tight">
           Hi, I'm
           <span class="text-[#4a6fa5]">Syalom Layezar</span>
         </h1>
       </div>
 
-      <!-- Subheadline: Role & Company -->
+      <!--
+        Subheadline: Role & Specialization
+        ----------------------------------
+        Describes your primary role and specialization.
+      -->
       <h2 class="text-lg sm:text-xl text-gray-300 mb-3">
         I’m a
         <span class="font-semibold text-[#4a6fa5]">Freelancer</span>
@@ -170,65 +280,100 @@
         <span class="font-semibold text-[#4a6fa5]">Full-Stack Developer</span>.
       </h2>
 
-      <!-- Deskripsi Singkat -->
+      <!--
+        Brief Description
+        -----------------
+        A short, inviting sentence encouraging visitors to explore your portfolio.
+      -->
       <p class="text-sm sm:text-base text-gray-300 max-w-lg mb-5">
         Feel free to explore my portfolio — I’d love to connect!
       </p>
 
-      <!-- Tombol CTA -->
+      <!--
+        Call-to-Action Button
+        ---------------------
+        Opens the user's email client with a new message to your address.
+      -->
       <div>
         <a
           href="mailto:syallom06@gmail.com"
           class="inline-block px-6 py-2 bg-[#4a6fa5] text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
+          aria-label="Book a call"
         >
           Book a call
         </a>
       </div>
 
-      <button>
+      <!--
+        Scroll Down Indicator
+        ---------------------
+        A visual cue prompting users to scroll down to the next section (#about).
+        The .scroll-down element is linked to a smooth scroll script.
+      -->
+      <button aria-label="Scroll down">
         <div class="scroll-down">
           <i class="fa fa-chevron-down"></i>
         </div>
       </button>
     </section>
 
-    <!-- 🔹 About Section -->
+    <!-- ABOUT SECTION -->
     <section
       id="about"
       class="min-h-[80vh] flex items-center justify-center px-10 sm:px-20 mt-16 sm:mt-4 mb-12 sm:mb-14"
     >
+      <!--
+        About Section Container
+        -----------------------
+        Centers content and provides padding/margin for spacing.
+      -->
       <div
         class="glass-about flex flex-col md:flex-row items-center w-full max-w-6xl gap-6 py-6 sm:py-10 relative"
       >
-        <!-- Header Card -->
+        <!--
+          Section Header Badge
+          --------------------
+          Positioned above the main content. Displays the section title.
+        -->
         <div
           class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-full shadow-md"
         >
           <h2 class="text-lg sm:text-xl font-semibold text-white">About Me</h2>
         </div>
 
-        <!-- Bagian Kiri: Teks -->
+        <!--
+          Text Content (Left)
+          -------------------
+          A heading and descriptive paragraph about yourself.
+          Paragraph is placeholder text (lorem ipsum) matching original length.
+        -->
         <div class="md:w-1/2 text-center sm:text-left mt-8">
           <h3 class="text-2xl sm:text-3xl font-bold text-[#4a6fa5] mb-4">
             Who Am I?
           </h3>
           <p class="text-base sm:text-lg text-gray-300">
-            I am a musician proficient in guitar and piano. In addition, I have
-            strong skills in music composition. I have also been passionate
-            about programming since middle school, consistently exploring new
-            technologies and honing my development skills.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            vestibulum, purus sit amet mollis facilisis, felis augue tincidunt
+            purus, nec scelerisque velit risus eu turpis. Cras sollicitudin ex
+            in risus venenatis, at efficitur dolor gravida.
           </p>
         </div>
 
-        <!-- Bagian Kanan: 3D Lingkaran Berlapis dengan Link -->
+        <!--
+          GitHub Link Visual (Right)
+          ---------------------------
+          A circular SVG text animation with a layered card below.
+          Actual hover animation implemented via CSS.
+        -->
         <div
           class="md:w-1/2 flex flex-col justify-center items-center relative mt-8"
         >
           <a
-            href="https://github.com/syalomclubby"
+            href="https://github.com/username"
             target="_blank"
             class="group relative flex justify-center items-center"
           >
+            <!-- Circular text around the path -->
             <svg
               width="300"
               height="300"
@@ -239,9 +384,9 @@
                 <path
                   id="circlePath"
                   d="M 150, 150
-                  m -120, 0
-                  a 120,120 0 1,1 240,0
-                  a 120,120 0 1,1 -240,0"
+                 m -120, 0
+                 a 120,120 0 1,1 240,0
+                 a 120,120 0 1,1 -240,0"
                 ></path>
               </defs>
               <text fill="white" font-size="16">
@@ -257,6 +402,7 @@
               </text>
             </svg>
 
+            <!-- Layered circles card -->
             <div class="circle-card">
               <div class="circle"></div>
               <div class="circle"></div>
@@ -272,14 +418,22 @@
       </div>
     </section>
 
-    <!-- 🔹 Experience Section -->
+    <!-- EXPERIENCE SECTION -->
     <section
       id="experience"
       class="bg-[#243044] min-h-screen pt-24 pb-12 px-10 sm:px-14 md:px-20"
     >
-      <!-- Container -->
+      <!--
+        EXPERIENCE SECTION
+        ------------------
+        Contains a title, subtitle, and a grid of experience cards.
+      -->
       <div class="max-w-6xl mx-auto">
-        <!-- Judul & Subjudul -->
+        <!--
+          Section Header
+          --------------
+          A small uppercase label, a main heading, and a brief subtitle.
+        -->
         <div class="mb-8">
           <p
             class="text-[#4a6fa5] text-sm sm:text-base font-semibold uppercase tracking-wide"
@@ -289,105 +443,139 @@
           <h2
             class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-4"
           >
-            My Journey in Technology.
+            My Journey in Technology
           </h2>
           <p class="text-gray-300 text-sm sm:text-base mt-2 max-w-2xl">
-            I have embraced diverse challenges, from creating immersive
-            Minecraft servers to developing a community website, and even
-            interning as an engineer at Hotama.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            venenatis metus at tortor pulvinar varius.
           </p>
         </div>
 
-        <!-- Grid Card -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!--
+          Grid of Experience Cards
+          ------------------------
+          Three columns on desktop, single column on mobile.
+        -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <!-- Card 1 -->
-          <div class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8">
+          <div
+            class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
+          >
+            <!-- Position Title -->
             <h3 class="text-lg sm:text-xl font-semibold text-[#4a6fa5]">
-              Minecraft Server Developer
+              Position Title 1
             </h3>
+            <!-- Description -->
             <p class="text-gray-300 text-sm sm:text-base mt-2">
-              Developed and managed a custom Minecraft server, enhancing the
-              gaming experience and building an engaged community.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div class="flex items-center gap-2 mt-4 text-gray-400 text-sm">
-              <img src="images/mclogo.png" alt="Project Logo" class="w-6 h-6" />
-              <span>Minecraft</span>
-              <!-- Ganti pemisah dengan vertical bar yang sedikit transparan -->
+            <!-- Company & Dates -->
+            <div
+              class="flex flex-wrap items-center gap-2 mt-4 text-gray-400 text-sm"
+            >
+              <img
+                src="images/logos/company-logo.png"
+                alt="Company 1 Logo"
+                class="w-6 h-6"
+              />
+              <span>Company A</span>
+              <!-- Separator -->
               <span class="text-gray-400/20">|</span>
-              <span>Aug 2019 - Present</span>
+              <span>Jan 2020 - Dec 2021</span>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8">
+          <div
+            class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
+          >
             <h3 class="text-lg sm:text-xl font-semibold text-[#4a6fa5]">
-              Website Developer
+              Position Title 2
             </h3>
             <p class="text-gray-300 text-sm sm:text-base mt-2">
-              Collaborated on building a dynamic website for a Minecraft
-              community, integrating interactive features and custom designs.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div class="flex items-center gap-2 mt-4 text-gray-400 text-sm">
+            <div
+              class="flex flex-wrap items-center gap-2 mt-4 text-gray-400 text-sm"
+            >
               <img
-                src="images/weblogo.png"
-                alt="Community Logo"
-                class="w-4 h-4"
+                src="images/logos/company-logo.png"
+                alt="Company 2 Logo"
+                class="w-6 h-6"
               />
-              <span>Clubby</span>
-              <!-- Ganti pemisah dengan vertical bar yang sedikit transparan -->
+              <span>Company B</span>
               <span class="text-gray-400/20">|</span>
-              <span>Oct 2021 - Present</span>
+              <span>Feb 2022 - Jul 2023</span>
             </div>
           </div>
 
           <!-- Card 3 -->
-          <div class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8">
+          <div
+            class="border border-[#4a6fa5]/50 rounded-xl p-6 sm:p-8 bg-white/5"
+          >
             <h3 class="text-lg sm:text-xl font-semibold text-[#4a6fa5]">
-              Engineer Intern at Hotama
+              Position Title 3
             </h3>
             <p class="text-gray-300 text-sm sm:text-base mt-2">
-              Gained hands-on experience as an engineer intern at Hotama,
-              contributing to innovative projects and refining technical skills.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <div class="flex items-center gap-2 mt-4 text-gray-400 text-sm">
+            <div
+              class="flex flex-wrap items-center gap-2 mt-4 text-gray-400 text-sm"
+            >
               <img
-                src="images/hotamalogo.png"
-                alt="Hotama Logo"
-                class="w-auto h-4"
+                src="images/logos/company-logo.png"
+                alt="Company 3 Logo"
+                class="w-6 h-6"
               />
-              <span>Hotama</span>
-              <!-- Ganti pemisah dengan vertical bar yang sedikit transparan -->
+              <span>Company C</span>
               <span class="text-gray-400/20">|</span>
-              <span>Feb 2025 - Apr 2025</span>
+              <span>Aug 2023 - Present</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section Tech Stack mirip “Saturnus 3D” -->
+    <!-- TECH STACK SECTION -->
     <section
       id="tech-stack"
       class="relative w-full flex flex-col items-center justify-start pt-16 text-white overflow-hidden"
     >
-      <!-- Judul -->
+      <!--
+        TECH STACK SECTION
+        ==================
+        This section displays a central “planet” with glowing rings and
+        cables connecting to technology icons arranged around it.
+        You can customize:
+          1. The glow colors in the <defs> gradient.
+          2. Each cable’s curve by editing its control points and end coordinates.
+          3. The icons by swapping out the <image> hrefs inside each <g>.
+      -->
+
+      <!-- Section Title -->
       <div class="max-w-2xl text-center px-4">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#4a6fa5]">
-          I'm currently looking to join a cross-functional team
+          I'm currently looking to join a cross‑functional team
         </h2>
         <p class="mt-2 text-sm sm:text-base md:text-lg text-gray-300">
-          that values improving people's lives through accessible design
+          that values improving people’s lives through accessible design
         </p>
       </div>
 
-      <!-- Pembungkus SVG agar responsif, plus flex justify-center untuk memusatkan diagram -->
+      <!-- SVG Container (responsive wrapper) -->
       <div class="w-[95%] sm:w-[80%] mx-auto mt-8 flex justify-center">
         <svg
           viewBox="0 0 1000 600"
           style="width: 100%; height: auto; max-width: 1000px"
           preserveAspectRatio="xMidYMid meet"
         >
-          <!-- ========== Definisi Gradient Glow Planet ========== -->
+          <!--
+            1) Gradient Definition: controls the planet’s glow.
+              - stop offsets & colors can be adjusted here.
+          -->
           <defs>
             <radialGradient id="planetGlow" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#4a6fa5" stop-opacity="0.8" />
@@ -396,74 +584,83 @@
             </radialGradient>
           </defs>
 
-          <!-- ========== KABEL (didefinisikan dulu, agar di belakang planet) ========== -->
-          <!-- Planet center: (500,300). Enam ikon di x: 220,340,460,580,700,820; y=100 -->
-          <!-- Tiga kabel kiri, tiga kabel kanan, control points melebar. -->
-
-          <!-- Kiri #1: (220,100) => Figma -->
+          <!--
+            2) Cables (SVG <path> elements)
+              Each path has:
+                M x y        → Move to start point (x,y)
+                C cx1 cy1    → First control point
+                  , cx2 cy2 → Second control point
+                  , ex ey   → End point of the curve
+              To reposition an icon, note its end point (ex,ey).
+          -->
+          <!-- Left Cable #1: End at (220,100) -->
           <path
-            d="M 500 300
-           C 400 220, 300 160, 220 100"
+            d="M500,300
+           C400,220, 300,160, 220,100"
             fill="none"
             stroke="#4a6fa5"
             stroke-width="2"
             stroke-opacity="0.5"
           />
-          <!-- Kiri #2: (340,100) => Next.js -->
+          <!-- Left Cable #2: End at (340,100) -->
           <path
-            d="M 500 300
-           C 430 220, 370 160, 340 100"
+            d="M500,300
+           C430,220, 370,160, 340,100"
             fill="none"
             stroke="#4a6fa5"
             stroke-width="2"
             stroke-opacity="0.5"
           />
-          <!-- Kiri #3: (460,100) => Laravel -->
+          <!-- Left Cable #3: End at (460,100) -->
           <path
-            d="M 500 300
-           C 470 220, 450 160, 460 100"
-            fill="none"
-            stroke="#4a6fa5"
-            stroke-width="2"
-            stroke-opacity="0.5"
-          />
-
-          <!-- Kanan #1: (580,100) => Tailwind -->
-          <path
-            d="M 500 300
-           C 530 220, 550 160, 580 100"
-            fill="none"
-            stroke="#4a6fa5"
-            stroke-width="2"
-            stroke-opacity="0.5"
-          />
-          <!-- Kanan #2: (700,100) => JavaScript -->
-          <path
-            d="M 500 300
-           C 620 220, 650 160, 700 100"
-            fill="none"
-            stroke="#4a6fa5"
-            stroke-width="2"
-            stroke-opacity="0.5"
-          />
-          <!-- Kanan #3: (820,100) => Node.js -->
-          <path
-            d="M 500 300
-           C 660 220, 750 160, 820 100"
+            d="M500,300
+           C470,220, 450,160, 460,100"
             fill="none"
             stroke="#4a6fa5"
             stroke-width="2"
             stroke-opacity="0.5"
           />
 
-          <!-- ========== PLANET & CINCIN (di depan kabel) ========== -->
+          <!-- Right Cable #1: End at (580,100) -->
+          <path
+            d="M500,300
+           C530,220, 550,160, 580,100"
+            fill="none"
+            stroke="#4a6fa5"
+            stroke-width="2"
+            stroke-opacity="0.5"
+          />
+          <!-- Right Cable #2: End at (700,100) -->
+          <path
+            d="M500,300
+           C620,220, 650,160, 700,100"
+            fill="none"
+            stroke="#4a6fa5"
+            stroke-width="2"
+            stroke-opacity="0.5"
+          />
+          <!-- Right Cable #3: End at (820,100) -->
+          <path
+            d="M500,300
+           C660,220, 750,160, 820,100"
+            fill="none"
+            stroke="#4a6fa5"
+            stroke-width="2"
+            stroke-opacity="0.5"
+          />
+
+          <!--
+            3) Planet & Rings
+              - Centered at (500,300). 
+              - Glow uses the #planetGlow gradient.
+              - Rings are simple <ellipse> shapes.
+          -->
           <g transform="translate(500,300)">
             <!-- Glow -->
             <circle r="160" fill="url(#planetGlow)" />
-            <!-- Planet -->
+            <!-- Planet Core -->
             <circle r="80" fill="#4a6fa5" />
-
-            <!-- Cincin Saturnus -->
+            <!-- Saturn-like Rings -->
             <ellipse
               cx="0"
               cy="0"
@@ -471,7 +668,6 @@
               ry="60"
               fill="none"
               stroke="#4a6fa5"
-              stroke-width="1"
               stroke-opacity="0.5"
             />
             <ellipse
@@ -481,7 +677,6 @@
               ry="64"
               fill="none"
               stroke="#4a6fa5"
-              stroke-width="1"
               stroke-opacity="0.3"
             />
             <ellipse
@@ -491,11 +686,10 @@
               ry="68"
               fill="none"
               stroke="#4a6fa5"
-              stroke-width="1"
               stroke-opacity="0.2"
             />
 
-            <!-- Ikon FA di tengah planet -->
+            <!-- Center Icon (Font Awesome) -->
             <text
               x="0"
               y="8"
@@ -505,10 +699,10 @@
               font-family="FontAwesome"
             >
               &#xf109;
-              <!-- fa-laptop-code -->
+              <!-- fa‑laptop‑code -->
             </text>
 
-            <!-- Ikon Kecil di Cincin (TIDAK DIUBAH) -->
+            <!-- This section is a small icon that rotates around the core planet, like a planet/satellite orbiting -->
             <g
               fill="#4a6fa5"
               font-family="FontAwesome"
@@ -516,7 +710,6 @@
               text-anchor="middle"
               alignment-baseline="middle"
             >
-              <!-- Sudut 0,30,60,...,330 - sama seperti sebelumnya -->
               <text x="320" y="0">&#xf13b;</text>
               <!-- fa-html5 -->
               <text x="277" y="34">&#xf38b;</text>
@@ -544,67 +737,65 @@
             </g>
           </g>
 
-          <!-- ========== IKON BESAR DI ATAS (paling depan) ========== -->
-          <!-- 1) Figma => (220,100) -->
+          <!--
+            4) Tech Icons
+              Replace each <image> href with your own 64×64 icon.
+              The <g transform="translate(x,y)"> positions it at the cable end.
+          -->
           <g transform="translate(220,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/figma.png"
+              href="images/framework-icons/figma.png"
               x="-32"
               y="-32"
               width="64"
               height="64"
             />
           </g>
-          <!-- 2) Next.js => (340,100) -->
           <g transform="translate(340,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/nextjs.png"
+              href="images/framework-icons/nextjs.png"
               x="-32"
               y="-32"
               width="64"
               height="64"
             />
           </g>
-          <!-- 3) Laravel => (460,100) -->
           <g transform="translate(460,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/laravel.png"
+              href="images/framework-icons/laravel.png"
               x="-32"
               y="-32"
               width="64"
               height="64"
             />
           </g>
-          <!-- 4) Tailwind => (580,100) -->
           <g transform="translate(580,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/tailwind.png"
+              href="images/framework-icons/tailwind.png"
               x="-32"
               y="-32"
               width="64"
               height="64"
             />
           </g>
-          <!-- 5) JavaScript => (700,100) -->
           <g transform="translate(700,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/js.png"
+              href="images/framework-icons/javascript.png"
               x="-32"
               y="-32"
               width="64"
               height="64"
             />
           </g>
-          <!-- 6) Node.js => (820,100) -->
           <g transform="translate(820,100)">
             <circle r="50" fill="#3A3F4B" />
             <image
-              href="images/nodejs.png"
+              href="images/framework-icons/nodejs.png"
               x="-32"
               y="-32"
               width="64"
@@ -615,129 +806,141 @@
       </div>
     </section>
 
-    <!-- 🔹 Featured Projects (Section 4) -->
+    <!-- FEATURED PROJECT SECTION -->
     <section
       id="projects"
       class="py-12 bg-[#243044] flex flex-col items-center justify-center"
     >
+      <!-- Background Decoration -->
       <div class="absolute inset-0 pointer-events-none -z-10 asap-bg"></div>
 
-      <!-- Judul Halaman -->
+      <!-- Section Header -->
       <div class="text-center mb-8 px-4">
+        <!-- Main Title -->
         <h2 class="text-3xl sm:text-4xl font-bold text-[#4a6fa5]">
-          Featured Projects
+          <!-- Replace with your own headline -->
+          Featured Project
         </h2>
+        <!-- Subtitle / Description -->
         <p class="text-gray-300 mt-2 text-base sm:text-lg">
-          Check out some of my highlighted projects below.
+          <!-- Replace with your own description -->
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
 
-      <!-- Container Utama dengan margin kiri/kanan lebih lebar dan spasi antar-proyek besar -->
+      <!-- Projects Container -->
       <div class="max-w-6xl w-full mx-auto space-y-20 px-8">
-        <!-- PROJECT 1 -->
+        <!-- ========================
+             PROJECT 1
+        ============================ -->
         <div
           class="relative flex flex-col sm:flex-row items-center justify-center"
         >
-          <!-- Kolom Kiri: Judul di luar overlay kaca -->
+          <!-- Left Column: Title & Description -->
           <div class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-left">
-            <!-- Judul & Subjudul di atas container kaca -->
+            <!-- Project Label -->
             <span class="block text-xs uppercase text-[#4a6fa5] mb-1">
-              plarray
+              Project One
             </span>
+
+            <!-- Project Title -->
             <h3 class="text-2xl sm:text-3xl font-bold mb-4">
-              Game Distribution Web
+              Lorem ipsum dolor sit amet
             </h3>
 
-            <!-- Container kaca (dengan border putih) lebih lebar menimpa gambar -->
+            <!-- Glassmorphism Description Box -->
             <div
               class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg text-white w-full sm:w-[110%] sm:-mr-16"
             >
               <p class="text-gray-200">
-                A web-based game distribution platform similar to Steam. Enjoy
-                seamless browsing, purchasing, and downloading of digital games
-                with an intuitive interface.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                lacinia odio vitae vestibulum vestibulum.
               </p>
             </div>
           </div>
 
-          <!-- Kolom Kanan: Wadah gambar + overlay tirai -->
+          <!-- Right Column: Image & View Button -->
           <div class="sm:w-1/2 flex justify-center">
-            <!-- Wadah dengan overflow-hidden & rounded-lg agar tirai terklip -->
             <div class="relative w-full sm:w-auto rounded-lg overflow-hidden">
-              <!-- Tirai (overlay) di depan gambar -->
+              <!-- Button Overlay (Fixed Position Over Image) -->
               <div
-                id="curtain1"
-                class="absolute inset-0 bg-gray-900/80 flex items-center justify-center transition-transform duration-700 rounded-lg translate-x-0"
+                class="absolute inset-0 bg-gray-900/80 flex items-center justify-center"
               >
-                <!-- Tombol gradient biru + ikon FA -->
-                <button
-                  id="btnCurtain1"
-                  class="bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-gray-500 shadow-lg hover:shadow-xl transition-shadow text-white px-5 py-2 rounded-full font-semibold flex items-center space-x-2 shadow-lg transform transition-transform ease-in-out duration-300 hover:scale-105"
+                <!-- View Project Button -->
+                <a
+                  href="https://github.com/yourusername/project-one"
+                  target="_blank"
+                  class="bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-[#4a6fa5] shadow-lg hover:shadow-xl transition-shadow text-white px-5 py-2 rounded-full font-semibold flex items-center space-x-2 transform transition-transform ease-in-out duration-300 hover:scale-105"
+                  aria-label="View Project One"
                 >
-                  <!-- Ikon FA Eye (pastikan Font Awesome sudah dimuat) -->
                   <i class="fa-solid fa-eye"></i>
                   <span>View Project</span>
-                </button>
+                </a>
               </div>
 
-              <!-- Gambar -->
+              <!-- Project Image -->
               <img
-                src="images/homepage.png"
-                alt="Project 1"
+                src="images/project-images/01-example.png"
+                alt="Project One Screenshot"
                 class="rounded-lg shadow-lg w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
               />
             </div>
           </div>
         </div>
 
-        <!-- PROJECT 2 -->
+        <!-- ========================
+             PROJECT 2
+        ============================ -->
         <div
           class="relative flex flex-col sm:flex-row-reverse items-center justify-center"
         >
-          <!-- Kolom Kanan: Judul di luar overlay kaca -->
+          <!-- Right Column: Title & Description -->
           <div class="sm:w-1/2 relative z-10 mb-6 sm:mb-0 text-right">
-            <!-- Judul & Subjudul di atas container kaca -->
+            <!-- Project Label -->
             <span class="block text-xs uppercase text-[#4a6fa5] mb-1">
-              Akharia
+              Project Two
             </span>
-            <h3 class="text-2xl sm:text-3xl font-bold mb-4">E-Commerce Web</h3>
 
-            <!-- Container kaca (dengan border putih) lebih lebar menimpa gambar -->
+            <!-- Project Title -->
+            <h3 class="text-2xl sm:text-3xl font-bold mb-4">
+              Sed do eiusmod tempor
+            </h3>
+
+            <!-- Glassmorphism Description Box -->
             <div
               class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg text-white w-full sm:w-[105%] sm:-ml-7 ml-auto"
             >
               <p class="text-gray-200">
-                An e-commerce site for local brands built with a collaborative
-                team. I focused on delivering a responsive, engaging front-end
-                experience.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.
               </p>
             </div>
           </div>
 
-          <!-- Kolom Kiri: Wadah gambar + overlay tirai -->
+          <!-- Left Column: Image & View Button -->
           <div class="sm:w-1/2 flex justify-center">
-            <!-- Wadah dengan overflow-hidden & rounded-lg agar tirai terklip -->
             <div class="relative w-full sm:w-auto rounded-lg overflow-hidden">
-              <!-- Tirai (overlay) di depan gambar -->
+              <!-- Button Overlay -->
               <div
-                id="curtain2"
-                class="absolute inset-0 bg-gray-900/80 flex items-center justify-center transition-transform duration-700 rounded-lg translate-x-0"
+                class="absolute inset-0 bg-black/60 flex items-center justify-center"
               >
-                <!-- Tombol gradient biru + ikon FA -->
-                <button
-                  id="btnCurtain2"
-                  class="bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-gray-500 shadow-lg hover:shadow-xl transition-shadow text-white px-5 py-2 rounded-full font-semibold flex items-center space-x-2 shadow-lg transform transition-transform ease-in-out duration-300 hover:scale-105"
+                <!-- View Project Button -->
+                <a
+                  href="https://github.com/yourusername/project-two"
+                  target="_blank"
+                  class="bg-gray-800 border border-gray-600 focus:ring-2 focus:ring-[#4a6fa5] shadow-lg hover:shadow-xl transition-shadow text-white px-5 py-2 rounded-full font-semibold flex items-center space-x-2 transform transition-transform ease-in-out duration-300 hover:scale-105"
+                  aria-label="View Project Two"
                 >
-                  <!-- Ikon FA Eye -->
                   <i class="fa-solid fa-eye"></i>
                   <span>View Project</span>
-                </button>
+                </a>
               </div>
 
-              <!-- Gambar -->
+              <!-- Project Image -->
               <img
-                src="images/homepage2.png"
-                alt="Project 2"
+                src="images/project-images/02-example.png"
+                alt="Project Two Screenshot"
                 class="rounded-lg shadow-lg w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-105 hover:brightness-110"
               />
             </div>
@@ -746,409 +949,23 @@
       </div>
     </section>
 
+    <!-- ========================
+        SITE FOOTER
+    ============================ -->
     <footer
       class="bg-gradient-to-r from-[#1b2532] via-[#243044] to-[#1b2532] py-10 border-t border-gray-700 shadow-md"
     >
       <div class="max-w-6xl mx-auto px-4 text-center text-gray-300">
+        <!-- Copyright Notice -->
         <p class="text-sm">&copy; 2023 Syalom. All rights reserved.</p>
+
+        <!-- Signature Line / Tagline -->
         <p class="mt-2 text-xs text-gray-400">
           Crafted with precision and passion.
         </p>
       </div>
     </footer>
 
-    <!-- SCRIPT: Menggeser overlay tirai saat tombol di-klik -->
-    <script>
-      // Ambil elemen audio
-      const bgMusic = document.getElementById("bgMusic");
-
-      // Pastikan musik diputar otomatis
-      window.addEventListener("load", () => {
-        bgMusic.volume = 0.3; // Atur volume (nilai antara 0.0 - 1.0)
-        bgMusic.play().catch((error) => {
-          console.error("Autoplay failed:", error);
-        });
-      });
-
-      // Project 1
-      const btnCurtain1 = document.getElementById("btnCurtain1");
-      const curtain1 = document.getElementById("curtain1");
-
-      btnCurtain1.addEventListener("click", () => {
-        // Geser overlay ke kanan (keluar wadah).
-        curtain1.classList.add("translate-x-full");
-      });
-
-      // Project 2
-      const btnCurtain2 = document.getElementById("btnCurtain2");
-      const curtain2 = document.getElementById("curtain2");
-
-      btnCurtain2.addEventListener("click", () => {
-        curtain2.classList.add("translate-x-full");
-      });
-
-      // Fungsi untuk menangani animasi scroll ke section
-      document.querySelectorAll("#mobileMenu a").forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault(); // Mencegah perilaku default dari tautan
-
-          const targetId = this.getAttribute("href"); // Ambil ID target dari href
-          const targetElement = document.querySelector(targetId); // Cari elemen target
-
-          if (targetElement) {
-            // Animasi scroll ke elemen target
-            window.scrollTo({
-              top: targetElement.offsetTop,
-              behavior: "smooth",
-            });
-
-            // Tutup menu mobile setelah klik
-            mobileMenu.classList.add("opacity-0", "-translate-y-4");
-            setTimeout(() => {
-              mobileMenu.classList.add("hidden");
-            }, 300); // Sesuaikan durasi dengan CSS
-
-            // Reset animasi hamburger
-            navToggle.classList.remove("hamburger-active");
-          }
-        });
-      });
-
-      // Scroll Down
-      document
-        .querySelector(".scroll-down")
-        ?.addEventListener("click", function () {
-          const targetElement = document.querySelector("#about");
-          if (targetElement) {
-            window.scrollTo({
-              top:
-                targetElement.offsetTop -
-                (window.innerHeight - targetElement.clientHeight),
-              behavior: "smooth",
-            });
-          }
-        });
-
-      // Hanya aktifkan custom cursor jika device mendukung pointer fine (desktop)
-      if (window.matchMedia("(pointer: fine)").matches) {
-        const customCursor = document.getElementById("customCursor");
-
-        // Set style dasar custom cursor
-        customCursor.style.position = "fixed";
-        customCursor.style.top = "0";
-        customCursor.style.left = "0";
-        customCursor.style.width = "9px";
-        customCursor.style.height = "9px";
-        customCursor.style.backgroundColor = "rgba(255,255,255,1)";
-        customCursor.style.borderRadius = "9999px";
-        customCursor.style.pointerEvents = "none";
-        customCursor.style.transform = "translate(-50%, -50%)";
-        customCursor.style.zIndex = "9999";
-        customCursor.style.mixBlendMode = "difference";
-        // Hapus transition pada transform (akan diupdate manual)
-        customCursor.style.transition =
-          "width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease";
-
-        let targetX = 0,
-          targetY = 0;
-        let currentX = 0,
-          currentY = 0;
-        let lastTime = performance.now();
-        // Smoothing constant: semakin besar nilainya, semakin cepat menyusul target
-        const smoothing = 12;
-
-        function animateCursor(currentTime) {
-          const dt = (currentTime - lastTime) / 1000; // delta time dalam detik
-          lastTime = currentTime;
-          // Menggunakan exponential smoothing: faktor = 1 - exp(-smoothing * dt)
-          const factor = 1 - Math.exp(-smoothing * dt);
-          currentX += (targetX - currentX) * factor;
-          currentY += (targetY - currentY) * factor;
-          customCursor.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-          requestAnimationFrame(animateCursor);
-        }
-        requestAnimationFrame(animateCursor);
-
-        // Update posisi target saat mouse bergerak
-        document.addEventListener("mousemove", (e) => {
-          targetX = e.clientX;
-          targetY = e.clientY;
-
-          // Sembunyikan custom cursor jika mendekati tepi layar
-          const buffer = 5;
-          if (
-            e.clientX < buffer ||
-            e.clientY < buffer ||
-            window.innerWidth - e.clientX < buffer ||
-            window.innerHeight - e.clientY < buffer
-          ) {
-            customCursor.style.opacity = "0";
-          } else {
-            customCursor.style.opacity = "1";
-          }
-        });
-
-        // Efek hover pada elemen clickable
-        const hoverableSelectors = [
-          "button",
-          "a",
-          "input[type='button']",
-          "input[type='submit']",
-        ];
-        hoverableSelectors.forEach((selector) => {
-          document.querySelectorAll(selector).forEach((el) => {
-            el.addEventListener("mouseenter", () => {
-              customCursor.style.width = "30px";
-              customCursor.style.height = "30px";
-              customCursor.style.backgroundColor = "rgba(255,255,255,0.8)";
-            });
-            el.addEventListener("mouseleave", () => {
-              customCursor.style.width = "9px";
-              customCursor.style.height = "9px";
-              customCursor.style.backgroundColor = "rgba(255,255,255,1)";
-            });
-          });
-        });
-      } else {
-        // Jika pointer bukan fine (mobile), sembunyikan custom cursor
-        const customCursor = document.getElementById("customCursor");
-        if (customCursor) {
-          customCursor.style.display = "none";
-        }
-      }
-
-      // Ambil elemen-elemen yang diperlukan
-      const navToggle = document.getElementById("navToggle");
-      const mobileMenu = document.getElementById("mobileMenu");
-
-      // Fungsi untuk menangani toggle menu mobile
-      navToggle.addEventListener("click", () => {
-        // Toggle animasi hamburger ke "X" (pastikan ada CSS untuk ini)
-        navToggle.classList.toggle("hamburger-active");
-
-        if (mobileMenu.classList.contains("hidden")) {
-          // Buka menu
-          mobileMenu.classList.remove("hidden");
-          setTimeout(() => {
-            mobileMenu.classList.remove("opacity-0", "-translate-y-4");
-          }, 10);
-        } else {
-          // Tutup menu
-          mobileMenu.classList.add("opacity-0", "-translate-y-4");
-          setTimeout(() => {
-            mobileMenu.classList.add("hidden");
-          }, 300); // Sesuaikan durasi dengan CSS
-        }
-      });
-
-      // Efek Kaca saat scroll (sama seperti sebelumnya)
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add(
-            "backdrop-blur-md",
-            "bg-white/10",
-            "border-white/20",
-            "rounded-xl",
-            "mt-4",
-            "h-16"
-          );
-          navbar.classList.remove(
-            "bg-transparent",
-            "border-transparent",
-            "h-20",
-            "mt-0"
-          );
-        } else {
-          navbar.classList.remove(
-            "backdrop-blur-md",
-            "bg-white/10",
-            "border-white/20",
-            "rounded-xl",
-            "mt-4",
-            "h-16"
-          );
-          navbar.classList.add(
-            "bg-transparent",
-            "border-transparent",
-            "h-20",
-            "mt-0"
-          );
-        }
-      });
-
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("loader");
-        const squares = document.querySelectorAll("#diamond .square");
-
-        // Set awal: setiap kotak mulai dengan scale 0
-        gsap.set(squares, { scale: 0 });
-
-        // Timeline untuk animasi loader
-        const tl = gsap.timeline({
-          onComplete: () => {
-            // Fade out loader secara halus
-            gsap.to(loader, {
-              opacity: 0,
-              duration: 0.5,
-              ease: "power1.out",
-              onComplete: () => {
-                loader.style.display = "none";
-                document.body.classList.remove("overflow-hidden");
-              },
-            });
-          },
-        });
-
-        // Animasi: tiap kotak tumbuh dari scale 0 ke scale 1 dengan efek back (overshoot)
-        tl.to(squares, {
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "back.out(1.7)",
-        });
-
-        // Tahan loader selama 0.5 detik sebelum fade out
-        tl.to({}, { duration: 0.5 });
-      });
-
-      const messages = ["Hello", "Welcome", "I'm Syalom"];
-
-      const typewriterEl = document.getElementById("typewriter");
-
-      let currentMessageIndex = 0;
-      let currentCharIndex = 0;
-      let isDeleting = false;
-
-      // Gunakan ikon Font Awesome:
-      // Ikon terminal untuk coding (sebagai pengganti vector "S")
-      const terminalIcon = '<i class="fas fa-globe text-[#4a6fa5] mr-2"></i>';
-      // Ikon panah sebagai prefix (menggantikan simbol ">")
-      const arrowIcon =
-        '<i class="fas fa-angle-right text-[#4a6fa5] mr-2"></i>';
-
-      function type() {
-        const currentMessage = messages[currentMessageIndex];
-        let displayedText = currentMessage.substring(0, currentCharIndex);
-
-        // Gabungkan ikon terminal, ikon panah, teks, dan kursor
-        typewriterEl.innerHTML =
-          terminalIcon +
-          arrowIcon +
-          displayedText +
-          "<span class='cursor'></span>";
-
-        if (!isDeleting && currentCharIndex < currentMessage.length) {
-          currentCharIndex++;
-          setTimeout(type, 100);
-        } else if (!isDeleting && currentCharIndex === currentMessage.length) {
-          isDeleting = true;
-          setTimeout(type, 1500);
-        } else if (isDeleting && currentCharIndex > 0) {
-          currentCharIndex--;
-          setTimeout(type, 50);
-        } else if (isDeleting && currentCharIndex === 0) {
-          isDeleting = false;
-          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
-          setTimeout(type, 500);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", type);
-
-      const lenis = new Lenis();
-
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
-      requestAnimationFrame(raf);
-
-      // Fungsi untuk meng-animate teks per kata
-      function animateText(el) {
-        const originalText = el.innerText;
-        // Pecah teks per huruf
-        const letters = originalText.split("");
-        el.innerHTML = ""; // Kosongkan teks sebelum animasi dimulai
-
-        // Bungkus tiap huruf dengan <span>
-        letters.forEach((letter) => {
-          const span = document.createElement("span");
-          span.innerText = letter;
-          el.appendChild(span);
-        });
-
-        // Animasi muncul tiap huruf dengan opacity dan naik sedikit
-        gsap.fromTo(
-          el.querySelectorAll("span"),
-          { opacity: 0, y: 10 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-            stagger: 0.05, // Waktu jeda antar huruf
-            delay: 2, // Delay sebelum animasi dimulai
-          }
-        );
-      }
-
-      // Setelah loader selesai, jalankan animasi pada setiap elemen dengan class .animated-text
-      function animateHomeSection() {
-        document.querySelectorAll(".animated-text").forEach(animateText);
-      }
-
-      // Menjalankan animasi setelah halaman selesai dimuat
-      window.addEventListener("load", animateHomeSection);
-
-      window.addEventListener("scroll", () => {
-        const btn = document.getElementById("scrollTopBtn");
-        if (window.scrollY > 200) {
-          btn.classList.add("show");
-        } else {
-          btn.classList.remove("show");
-        }
-      });
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-        window.addEventListener("scroll", function () {
-          if (window.scrollY > 200) {
-            scrollTopBtn.classList.remove("opacity-0", "scale-0");
-            scrollTopBtn.classList.add("opacity-100", "scale-100");
-          } else {
-            scrollTopBtn.classList.remove("opacity-100", "scale-100");
-            scrollTopBtn.classList.add("opacity-0", "scale-0");
-          }
-        });
-
-        scrollTopBtn.addEventListener("click", function () {
-          smoothScrollToTop(1500); // Durasi scroll 1500ms (1.5 detik)
-        });
-
-        function smoothScrollToTop(duration) {
-          const start = window.scrollY;
-          const startTime = performance.now();
-
-          function scrollStep(timestamp) {
-            const currentTime = timestamp - startTime;
-            const progress = Math.min(currentTime / duration, 1);
-            window.scrollTo(0, start * (1 - easeInOutCubic(progress)));
-
-            if (progress < 1) {
-              requestAnimationFrame(scrollStep);
-            }
-          }
-
-          requestAnimationFrame(scrollStep);
-        }
-
-        // Fungsi easing untuk efek lambat di awal, cepat di tengah, lalu lambat di akhir
-        function easeInOutCubic(t) {
-          return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
-      });
-    </script>
+    <script src="js/script.js" defer type="module"></script>
   </body>
 </html>

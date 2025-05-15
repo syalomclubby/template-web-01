@@ -1,29 +1,31 @@
+/* Importing the 'Inter' font family from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
-/* Untuk browser WebKit (Chrome, Edge, Safari) */
+/* WebKit Browsers: Customize Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Lebar scrollbar */
+  width: 10px; /* Set scrollbar width */
 }
 
 ::-webkit-scrollbar-track {
-  background: #ebebeb; /* Warna track abu-abu gelap */
+  background: #ebebeb; /* Track background (light gray) */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a6fa5; /* Warna thumb sesuai primary */
-  border-radius: 10px; /* Ujung thumb membulat */
+  background: #4a6fa5; /* Thumb color (primary blue) */
+  border-radius: 10px; /* Rounded corners for thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a5f95; /* Warna thumb saat hover (sedikit lebih gelap) */
+  background: #3a5f95; /* Darker blue on hover */
 }
 
-/* Untuk Firefox */
+/* Firefox Scrollbar Styling */
 * {
   scrollbar-width: auto;
-  scrollbar-color: #4a6fa5 #ebebeb; /* Format: thumb, track */
+  scrollbar-color: #4a6fa5 #ebebeb; /* Thumb color, Track color */
 }
 
+/* Reset margin/padding and set default font for entire site */
 body,
 html {
   margin: 0;
@@ -32,42 +34,46 @@ html {
     sans-serif;
 }
 
-/* Header Card */
+/* Header label positioned above the glass-about card */
 .glass-about > div:first-child {
   position: absolute;
   top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  background: #4a6fa5; /* Warna biru solid */
+  background: #4a6fa5; /* Primary blue background */
   padding: 10px 20px;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slight shadow */
   text-align: center;
   color: white;
   font-weight: bold;
 }
 
+/* Global text styling used for uppercase labels */
 text {
-  letter-spacing: 2px; /* Atur spasi antar huruf */
+  letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: bold;
 }
 
+/* Central positioning and animation for rotating circular text */
 .circle-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center;
-  pointer-events: none; /* Agar tidak menghalangi klik */
+  pointer-events: none; /* Allow clicks to pass through */
   transform-style: preserve-3d;
   transition: all 1s ease-in-out;
 }
 
+/* 3D rotation effect on hover for circular text */
 .group:hover .circle-text {
   transform: translate(-50%, -50%) rotate3d(1, 1, 0, 60deg);
 }
 
+/* Outer shell of the rotating card (circular container) */
 .circle-card {
   background: linear-gradient(135deg, #4a6fa5, #334155);
   height: 220px;
@@ -78,11 +84,13 @@ text {
   position: relative;
 }
 
+/* Icons inside circle get a glowing effect */
 .circle-card .circle i {
   color: rgba(255, 255, 255, 0.7);
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
+/* Base style for all nested circles */
 .circle {
   background: linear-gradient(#ffffff27, #ffffff28);
   border-radius: inherit;
@@ -91,6 +99,7 @@ text {
   transition: all 1s ease-in-out;
 }
 
+/* Staggered layers with delays for hover animation */
 .circle:nth-child(1) {
   inset: 10px;
   transition-delay: 0.1s;
@@ -108,11 +117,12 @@ text {
   transition-delay: 0.4s;
 }
 
-/* Efek Hover */
+/* Rotate the entire circle-card on hover */
 .circle-card:hover {
   transform: rotate3d(1, 1, 0, 60deg);
 }
 
+/* Animate nested circle layers outward in 3D space */
 .circle-card:hover .circle:nth-child(1) {
   transform: translate3d(0, 0, 20px);
 }
@@ -126,46 +136,49 @@ text {
   transform: translate3d(0, 0, 80px);
 }
 
+/* Cursor used for blinking typing effect */
 .cursor {
   display: inline-block;
   width: 1px;
-  height: 1em; /* pastikan kursor setinggi teks */
+  height: 1em;
   background-color: currentColor;
   margin-left: 4px;
   animation: blink 0.7s steps(1) infinite;
 }
 
+/* Code-style text for typewriter effect */
 #typewriter {
   font-family: "Fira Code", Consolas, "Courier New", monospace;
-  font-size: 1rem; /* Sesuaikan ukuran jika perlu */
+  font-size: 1rem;
 }
 
+/* Keyframes for blinking cursor */
 @keyframes blink {
   50% {
     opacity: 0;
   }
 }
 
-/* Hamburger container lebih kecil */
+/* Small hamburger menu for mobile view */
 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 14px; /* Lebar total hamburger */
-  height: 10px; /* Tinggi total hamburger */
+  width: 14px;
+  height: 10px;
 }
 
-/* Garis-garis hamburger */
+/* Hamburger lines styling */
 .hamburger span {
   display: block;
   width: 100%;
-  height: 2px; /* Lebih tipis */
+  height: 2px;
   background-color: white;
-  border-radius: 1px; /* Sedikit melengkung */
+  border-radius: 1px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Transformasi jadi 'X' */
+/* Hamburger transform to X (when active) */
 .hamburger-active .line1 {
   transform: rotate(45deg) translate(2.5px, 3.4px);
 }
@@ -176,6 +189,7 @@ text {
   transform: rotate(-45deg) translate(2px, -3px);
 }
 
+/* Online status badge (e.g. "Available") */
 .status-badge {
   display: flex;
   align-items: center;
@@ -189,16 +203,17 @@ text {
   color: #4a6fa5;
 }
 
+/* Animated green dot inside badge */
 .dot {
   position: relative;
   width: 6px;
   height: 6px;
-  background: rgb(1, 212, 114); /* Warna utama hijau */
+  background: rgb(1, 212, 114);
   border-radius: 50%;
   box-shadow: 0 0 8px #00ff88;
 }
 
-/* Efek Pulse */
+/* Pulse animation for the green dot */
 .dot::before,
 .dot::after {
   content: "";
@@ -213,12 +228,12 @@ text {
   opacity: 0.6;
   animation: pulse 1.5s infinite ease-out;
 }
-
 .dot::after {
   animation-delay: 0.75s;
-  background: rgba(0, 255, 136, 0.5); /* Warna kedua lebih transparan */
+  background: rgba(0, 255, 136, 0.5);
 }
 
+/* Keyframes for pulsing ring effect */
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -230,40 +245,38 @@ text {
   }
 }
 
-/* Keadaan awal: tombol tersembunyi, muncul dari bawah dengan efek “lompat” */
+/* Scroll to top button: hidden state */
 #scrollTopBtn {
   opacity: 0;
-  /* Lebih drastis: turun 60px + skala 0.5 */
   transform: translateY(60px) scale(0.5);
-
-  /* Opacity muncul lebih cepat (0.4s), lompat lebih lama (0.8s) */
   transition: opacity 0.4s ease-out,
     transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Visible state of scroll button */
 #scrollTopBtn.show {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* Loader 1: Kotak persegi dengan gap */
+/* Square loading element with neon glow */
 #rect-container .rect {
   width: 2rem;
   height: 2rem;
 }
-
 .square {
-  /* Efek glow neon */
   box-shadow: 0 0 20px 6px rgba(36, 48, 68, 0.9);
 }
 
-/* Glassmorphism */
+/* Base glassmorphism card style */
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Glassmorphism card used in About section */
 .glass-about {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
@@ -274,34 +287,26 @@ text {
   margin: 0 auto;
 }
 
-/* Background */
-/* Desktop / default (tetap) */
+/* Complex layered background with gradients */
 body {
-  background: 
-    /* Ungu di pojok kanan atas */ radial-gradient(
+  background: radial-gradient(
       circle at top right,
       rgba(38, 0, 255, 0.2),
       transparent 15%
     ),
-    /* Radial biru-hitam */
-      radial-gradient(
-        circle at 50% 30%,
-        rgba(0, 10, 36, 0.8),
-        rgba(0, 0, 0, 0.9)
-      ),
-    /* Linear gradient: dominan hitam di atas */
-      linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
+    radial-gradient(circle at 50% 30%, rgba(0, 10, 36, 0.8), rgba(0, 0, 0, 0.9)),
+    linear-gradient(180deg, #000814 0%, #000814 20%, #001f3f 100%);
   color: white;
   position: relative;
 }
 
-/* Mobile: turunkan opacity ungu */
+/* Slightly lighter background for mobile screens */
 @media (max-width: 768px) {
   body {
     background: radial-gradient(
         circle at top right,
         rgba(38, 0, 255, 0.1),
-        /* ganti 0.2 jadi 0.1 agar lebih tipis */ transparent 15%
+        transparent 15%
       ),
       radial-gradient(
         circle at 50% 30%,
@@ -312,12 +317,7 @@ body {
   }
 }
 
-.experience-card {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
-}
-
-/* Container for background circles in Tech Stack Section */
+/* Wrapper for animated background circles */
 .tech-bg-circles {
   position: absolute;
   top: 0;
@@ -327,7 +327,7 @@ body {
   overflow: hidden;
 }
 
-/* Base style for each circle */
+/* Base circle styling */
 .bg-circle {
   position: absolute;
   border-radius: 50%;
@@ -335,7 +335,7 @@ body {
   opacity: 0.6;
 }
 
-/* Circle definitions */
+/* Individual gradient circles with different sizes and colors */
 .circle-1 {
   width: 200px;
   height: 200px;
@@ -425,8 +425,10 @@ body {
   right: 30%;
 }
 
+/* (Each one uses radial gradients and absolute positioning for unique placement) */
+
+/* Foggy/asap background with subtle radial gradients */
 .asap-bg {
-  /* Tumpukan beberapa radial gradient abu-abu transparan */
   background: radial-gradient(
       circle at 20% 30%,
       rgba(128, 128, 128, 0.15),
@@ -447,15 +449,10 @@ body {
       rgba(128, 128, 128, 0.1),
       transparent 80%
     );
-
-  /* Membuat efek asap lebih halus */
   filter: blur(20px);
-
-  /* Lebar & tinggi mengikuti parent (sudah diatur di HTML pakai inset-0) */
-  /* pointer-events-none agar asap tidak mengganggu interaksi user */
 }
 
-/* Hero Section (Home) - Default (Desktop) */
+/* Hero section setup for centered layout */
 #home {
   position: relative;
   height: 100vh;
@@ -467,17 +464,17 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Override untuk mobile (misal: layar <= 768px) */
+/* Adjust hero layout for mobile screens */
 @media (max-width: 768px) {
   #home {
-    align-items: flex-start; /* konten rata kiri */
+    align-items: flex-start;
     text-align: left;
-    padding-left: 1.5rem; /* pastikan padding kiri dan kanan sesuai */
+    padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
 
-/* Scroll Down Button */
+/* Animated bounce scroll-down icon at bottom center */
 .scroll-down {
   position: absolute;
   bottom: 50px;
@@ -488,6 +485,7 @@ body {
   animation: bounce 1.5s infinite;
   cursor: pointer;
 }
+
 @keyframes bounce {
   0%,
   100% {
@@ -496,8 +494,4 @@ body {
   50% {
     transform: translateX(-50%) translateY(10px);
   }
-}
-
-#bgMusic {
-  display: none;
 }
